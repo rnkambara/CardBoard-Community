@@ -31,6 +31,7 @@ public class CollectionPanel extends javax.swing.JPanel {
         labelDefaultImage = new javax.swing.JLabel();
         labelBoardgame = new javax.swing.JLabel();
         buttonRid = new java.awt.Button();
+        jLabel1 = new javax.swing.JLabel();
         labelRating = new javax.swing.JLabel();
         labelPlayerCount = new javax.swing.JLabel();
         jSeparator5 = new javax.swing.JSeparator();
@@ -48,8 +49,6 @@ public class CollectionPanel extends javax.swing.JPanel {
         leftPanelOrange.setBackground(new java.awt.Color(233, 155, 2));
         leftPanelOrange.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         leftPanelOrange.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        labelDefaultImage.setIcon(new javax.swing.ImageIcon("/home/rnkambara/NetBeansProjects/CardboardCommunity/images/default_boardgame.png")); // NOI18N
         leftPanelOrange.add(labelDefaultImage, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, -1, -1));
 
         labelBoardgame.setFont(new java.awt.Font("Waree", 1, 14)); // NOI18N
@@ -68,6 +67,9 @@ public class CollectionPanel extends javax.swing.JPanel {
             }
         });
         leftPanelOrange.add(buttonRid, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 200, 80, 30));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon("/home/rnkambara/Documents/cardboardCommunity/CardBoard-Community/images/default_boardgame.png")); // NOI18N
+        leftPanelOrange.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, -1, -1));
 
         add(leftPanelOrange, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 160, 230));
 
@@ -109,6 +111,7 @@ public class CollectionPanel extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private java.awt.Button buttonRid;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JSeparator jSeparator5;
     private javax.swing.JSeparator jSeparator6;
     private javax.swing.JSeparator jSeparator7;

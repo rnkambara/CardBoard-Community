@@ -31,6 +31,7 @@ public class groupPanel extends javax.swing.JPanel {
         labelDefaultImage = new javax.swing.JLabel();
         labelGroupName = new javax.swing.JLabel();
         buttonWithdraw = new java.awt.Button();
+        jLabel1 = new javax.swing.JLabel();
         labelMember = new javax.swing.JLabel();
         listMembers = new java.awt.List();
         labelLocation = new javax.swing.JLabel();
@@ -43,8 +44,6 @@ public class groupPanel extends javax.swing.JPanel {
         leftPanelOrange.setBackground(new java.awt.Color(25, 229, 198));
         leftPanelOrange.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         leftPanelOrange.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        labelDefaultImage.setIcon(new javax.swing.ImageIcon("/home/rnkambara/NetBeansProjects/CardboardCommunity/images/default_group.jpeg")); // NOI18N
         leftPanelOrange.add(labelDefaultImage, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, -1, -1));
 
         labelGroupName.setFont(new java.awt.Font("Waree", 1, 14)); // NOI18N
@@ -63,6 +62,9 @@ public class groupPanel extends javax.swing.JPanel {
             }
         });
         leftPanelOrange.add(buttonWithdraw, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 200, -1, 30));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon("/home/rnkambara/Documents/cardboardCommunity/CardBoard-Community/images/default_group.jpeg")); // NOI18N
+        leftPanelOrange.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, -1, -1));
 
         add(leftPanelOrange, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 160, 230));
 
@@ -101,6 +103,7 @@ public class groupPanel extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private java.awt.Button buttonWithdraw;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JSeparator jSeparator5;
     private javax.swing.JLabel labelDefaultImage;

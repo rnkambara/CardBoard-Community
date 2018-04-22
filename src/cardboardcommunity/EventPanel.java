@@ -84,7 +84,7 @@ public class EventPanel extends javax.swing.JPanel {
         leftPanelOrange.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         leftPanelOrange.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        labelDefaultImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cardboardcommunity/default_event.png"))); // NOI18N
+        labelDefaultImage.setIcon(new javax.swing.ImageIcon("/home/rnkambara/Documents/cardboardCommunity/CardBoard-Community/images/default_event.png")); // NOI18N
         leftPanelOrange.add(labelDefaultImage, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, -1, -1));
 
         labelEvent.setFont(new java.awt.Font("Waree", 1, 14)); // NOI18N

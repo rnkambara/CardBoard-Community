@@ -39,6 +39,11 @@ public class EventPanel extends javax.swing.JPanel {
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jTabbedPane3 = new javax.swing.JTabbedPane();
         jSeparator2 = new javax.swing.JSeparator();
+        basicDatePickerUI1 = new org.jdesktop.swingx.plaf.basic.BasicDatePickerUI();
+        basicDatePickerUI2 = new org.jdesktop.swingx.plaf.basic.BasicDatePickerUI();
+        basicDatePickerUI3 = new org.jdesktop.swingx.plaf.basic.BasicDatePickerUI();
+        basicDatePickerUI4 = new org.jdesktop.swingx.plaf.basic.BasicDatePickerUI();
+        basicDatePickerUI5 = new org.jdesktop.swingx.plaf.basic.BasicDatePickerUI();
         leftPanelOrange = new javax.swing.JPanel();
         labelDefaultImage = new javax.swing.JLabel();
         labelEvent = new javax.swing.JLabel();
@@ -48,12 +53,13 @@ public class EventPanel extends javax.swing.JPanel {
         label_attending = new javax.swing.JLabel();
         labelTime = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
-        jSeparator3 = new javax.swing.JSeparator();
         listAttending = new java.awt.List();
         labelLocation = new javax.swing.JLabel();
         jSeparator4 = new javax.swing.JSeparator();
-        jSeparator5 = new javax.swing.JSeparator();
         textFieldDescription = new java.awt.TextField();
+        dateChooser = new datechooser.beans.DateChooserCombo();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
 
         menu1.setLabel("File");
         menuBar1.add(menu1);
@@ -121,10 +127,9 @@ public class EventPanel extends javax.swing.JPanel {
 
         labelTime.setFont(new java.awt.Font("Waree", 1, 14)); // NOI18N
         labelTime.setForeground(new java.awt.Color(253, 251, 251));
-        labelTime.setText("Time: ");
+        labelTime.setText("Date: ");
         add(labelTime, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 80, 140, -1));
         add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 210, 320, 10));
-        add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 100, 320, 10));
 
         listAttending.setBackground(new java.awt.Color(254, 254, 254));
         listAttending.setFont(new java.awt.Font("Waree", 1, 12)); // NOI18N
@@ -143,7 +148,6 @@ public class EventPanel extends javax.swing.JPanel {
         labelLocation.setText("Location: ");
         add(labelLocation, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 40, 140, -1));
         add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 30, 110, 10));
-        add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 60, 320, 10));
 
         textFieldDescription.setBackground(new java.awt.Color(254, 254, 254));
         textFieldDescription.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
@@ -155,6 +159,62 @@ public class EventPanel extends javax.swing.JPanel {
             }
         });
         add(textFieldDescription, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 140, 310, 60));
+
+        dateChooser.setCurrentView(new datechooser.view.appearance.AppearancesList("Contrast",
+            new datechooser.view.appearance.ViewAppearance("custom",
+                new datechooser.view.appearance.swing.SwingCellAppearance(new java.awt.Font("Ubuntu", java.awt.Font.PLAIN, 15),
+                    new java.awt.Color(76, 76, 76),
+                    new java.awt.Color(0, 0, 255),
+                    false,
+                    true,
+                    new datechooser.view.appearance.swing.ButtonPainter()),
+                new datechooser.view.appearance.swing.SwingCellAppearance(new java.awt.Font("Ubuntu", java.awt.Font.PLAIN, 15),
+                    new java.awt.Color(76, 76, 76),
+                    new java.awt.Color(0, 0, 255),
+                    true,
+                    true,
+                    new datechooser.view.appearance.swing.ButtonPainter()),
+                new datechooser.view.appearance.swing.SwingCellAppearance(new java.awt.Font("Ubuntu", java.awt.Font.PLAIN, 15),
+                    new java.awt.Color(0, 0, 255),
+                    new java.awt.Color(0, 0, 255),
+                    false,
+                    true,
+                    new datechooser.view.appearance.swing.ButtonPainter()),
+                new datechooser.view.appearance.swing.SwingCellAppearance(new java.awt.Font("Ubuntu", java.awt.Font.PLAIN, 15),
+                    new java.awt.Color(128, 128, 128),
+                    new java.awt.Color(0, 0, 255),
+                    false,
+                    true,
+                    new datechooser.view.appearance.swing.LabelPainter()),
+                new datechooser.view.appearance.swing.SwingCellAppearance(new java.awt.Font("Ubuntu", java.awt.Font.PLAIN, 15),
+                    new java.awt.Color(76, 76, 76),
+                    new java.awt.Color(0, 0, 255),
+                    false,
+                    true,
+                    new datechooser.view.appearance.swing.LabelPainter()),
+                new datechooser.view.appearance.swing.SwingCellAppearance(new java.awt.Font("Ubuntu", java.awt.Font.PLAIN, 15),
+                    new java.awt.Color(76, 76, 76),
+                    new java.awt.Color(255, 0, 0),
+                    false,
+                    false,
+                    new datechooser.view.appearance.swing.ButtonPainter()),
+                (datechooser.view.BackRenderer)null,
+                false,
+                true)));
+    dateChooser.setCalendarBackground(new java.awt.Color(1, 1, 1));
+    add(dateChooser, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 80, -1, -1));
+
+    jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+    jScrollPane1.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
+
+    jTextArea1.setBackground(new java.awt.Color(254, 254, 254));
+    jTextArea1.setFont(new java.awt.Font("Waree", 0, 15)); // NOI18N
+    jTextArea1.setForeground(new java.awt.Color(112, 110, 110));
+    jTextArea1.setText("Location goes here...");
+    jScrollPane1.setViewportView(jTextArea1);
+    jTextArea1.getAccessibleContext().setAccessibleParent(null);
+
+    add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 30, 180, 30));
     }// </editor-fold>//GEN-END:initComponents
 
     private void buttonWithdrawActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonWithdrawActionPerformed
@@ -171,15 +231,21 @@ public class EventPanel extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private org.jdesktop.swingx.plaf.basic.BasicDatePickerUI basicDatePickerUI1;
+    private org.jdesktop.swingx.plaf.basic.BasicDatePickerUI basicDatePickerUI2;
+    private org.jdesktop.swingx.plaf.basic.BasicDatePickerUI basicDatePickerUI3;
+    private org.jdesktop.swingx.plaf.basic.BasicDatePickerUI basicDatePickerUI4;
+    private org.jdesktop.swingx.plaf.basic.BasicDatePickerUI basicDatePickerUI5;
     private java.awt.Button buttonWithdraw;
+    private datechooser.beans.DateChooserCombo dateChooser;
     private javax.swing.JLabel defaultEventIcon;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
-    private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
-    private javax.swing.JSeparator jSeparator5;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTabbedPane jTabbedPane3;
+    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JLabel labelDefaultImage;
     private javax.swing.JLabel labelDescription;
     private javax.swing.JLabel labelEvent;

@@ -35,14 +35,18 @@ public class CollectionPanel extends javax.swing.JPanel {
         defaultBoardgameIcon = new javax.swing.JLabel();
         labelRating = new javax.swing.JLabel();
         labelPlayerCount = new javax.swing.JLabel();
-        jSeparator5 = new javax.swing.JSeparator();
         labelEdition = new javax.swing.JLabel();
         labelGenre = new javax.swing.JLabel();
         labelPlaytime = new javax.swing.JLabel();
-        jSeparator6 = new javax.swing.JSeparator();
-        jSeparator7 = new javax.swing.JSeparator();
-        jSeparator8 = new javax.swing.JSeparator();
-        jSeparator9 = new javax.swing.JSeparator();
+        jScrollPane7 = new javax.swing.JScrollPane();
+        jTextArea2 = new javax.swing.JTextArea();
+        jScrollPane8 = new javax.swing.JScrollPane();
+        jTextArea3 = new javax.swing.JTextArea();
+        jScrollPane9 = new javax.swing.JScrollPane();
+        jTextArea4 = new javax.swing.JTextArea();
+        jScrollPane10 = new javax.swing.JScrollPane();
+        jTextArea5 = new javax.swing.JTextArea();
+        jComboBox1 = new javax.swing.JComboBox<>();
 
         setBackground(new java.awt.Color(101, 95, 123));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -84,7 +88,6 @@ public class CollectionPanel extends javax.swing.JPanel {
         labelPlayerCount.setForeground(new java.awt.Color(253, 251, 251));
         labelPlayerCount.setText("Playercount: ");
         add(labelPlayerCount, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 20, 140, -1));
-        add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 200, 320, 20));
 
         labelEdition.setFont(new java.awt.Font("Waree", 1, 14)); // NOI18N
         labelEdition.setForeground(new java.awt.Color(253, 251, 251));
@@ -100,10 +103,57 @@ public class CollectionPanel extends javax.swing.JPanel {
         labelPlaytime.setForeground(new java.awt.Color(253, 251, 251));
         labelPlaytime.setText("Playtime: ");
         add(labelPlaytime, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 140, 110, -1));
-        add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 40, 320, 10));
-        add(jSeparator7, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 80, 320, 20));
-        add(jSeparator8, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 120, 320, 20));
-        add(jSeparator9, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 160, 320, 20));
+
+        jScrollPane7.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        jScrollPane7.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
+
+        jTextArea2.setBackground(new java.awt.Color(254, 254, 254));
+        jTextArea2.setFont(new java.awt.Font("Waree", 0, 15)); // NOI18N
+        jTextArea2.setForeground(new java.awt.Color(112, 110, 110));
+        jTextArea2.setText("Player count here...");
+        jScrollPane7.setViewportView(jTextArea2);
+
+        add(jScrollPane7, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 10, 200, 30));
+
+        jScrollPane8.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        jScrollPane8.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
+
+        jTextArea3.setBackground(new java.awt.Color(254, 254, 254));
+        jTextArea3.setFont(new java.awt.Font("Waree", 0, 15)); // NOI18N
+        jTextArea3.setForeground(new java.awt.Color(112, 110, 110));
+        jTextArea3.setText("Edition here...");
+        jScrollPane8.setViewportView(jTextArea3);
+
+        add(jScrollPane8, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 50, 200, 30));
+
+        jScrollPane9.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        jScrollPane9.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
+
+        jTextArea4.setBackground(new java.awt.Color(254, 254, 254));
+        jTextArea4.setFont(new java.awt.Font("Waree", 0, 15)); // NOI18N
+        jTextArea4.setForeground(new java.awt.Color(112, 110, 110));
+        jTextArea4.setText("Genre here...");
+        jScrollPane9.setViewportView(jTextArea4);
+
+        add(jScrollPane9, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 90, 200, 30));
+
+        jScrollPane10.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        jScrollPane10.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
+
+        jTextArea5.setBackground(new java.awt.Color(254, 254, 254));
+        jTextArea5.setFont(new java.awt.Font("Waree", 0, 15)); // NOI18N
+        jTextArea5.setForeground(new java.awt.Color(112, 110, 110));
+        jTextArea5.setText("Playtime here...");
+        jScrollPane10.setViewportView(jTextArea5);
+
+        add(jScrollPane10, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 130, 200, 30));
+
+        jComboBox1.setBackground(new java.awt.Color(254, 254, 254));
+        jComboBox1.setFont(new java.awt.Font("Waree", 0, 15)); // NOI18N
+        jComboBox1.setForeground(new java.awt.Color(112, 110, 110));
+        jComboBox1.setMaximumRowCount(6);
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "---", "1.0", "2.0", "3.0", "4.0", "5.0" }));
+        add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 180, 200, 30));
     }// </editor-fold>//GEN-END:initComponents
 
     private void buttonRidActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonRidActionPerformed
@@ -114,12 +164,16 @@ public class CollectionPanel extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private java.awt.Button buttonRid;
     private javax.swing.JLabel defaultBoardgameIcon;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JSeparator jSeparator5;
-    private javax.swing.JSeparator jSeparator6;
-    private javax.swing.JSeparator jSeparator7;
-    private javax.swing.JSeparator jSeparator8;
-    private javax.swing.JSeparator jSeparator9;
+    private javax.swing.JScrollPane jScrollPane10;
+    private javax.swing.JScrollPane jScrollPane7;
+    private javax.swing.JScrollPane jScrollPane8;
+    private javax.swing.JScrollPane jScrollPane9;
+    private javax.swing.JTextArea jTextArea2;
+    private javax.swing.JTextArea jTextArea3;
+    private javax.swing.JTextArea jTextArea4;
+    private javax.swing.JTextArea jTextArea5;
     private javax.swing.JLabel labelBoardgame;
     private javax.swing.JLabel labelDefaultImage;
     private javax.swing.JLabel labelEdition;

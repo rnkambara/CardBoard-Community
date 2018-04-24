@@ -43,7 +43,7 @@ public class CollectionPanel extends javax.swing.JPanel {
         jSeparator8 = new javax.swing.JSeparator();
         jSeparator9 = new javax.swing.JSeparator();
 
-        setBackground(new java.awt.Color(13, 1, 54));
+        setBackground(new java.awt.Color(101, 95, 123));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         leftPanelOrange.setBackground(new java.awt.Color(233, 155, 2));

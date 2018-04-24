@@ -75,7 +75,7 @@ public class EventPanel extends javax.swing.JPanel {
         jTabbedPane1.setTabPlacement(javax.swing.JTabbedPane.BOTTOM);
         jTabbedPane1.addTab("tab2", jTabbedPane3);
 
-        setBackground(new java.awt.Color(13, 1, 54));
+        setBackground(new java.awt.Color(101, 95, 123));
         setFont(new java.awt.Font("Liberation Mono", 0, 15)); // NOI18N
         setMaximumSize(new java.awt.Dimension(660, 230));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());

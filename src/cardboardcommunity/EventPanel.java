@@ -56,10 +56,11 @@ public class EventPanel extends javax.swing.JPanel {
         listAttending = new java.awt.List();
         labelLocation = new javax.swing.JLabel();
         jSeparator4 = new javax.swing.JSeparator();
-        textFieldDescription = new java.awt.TextField();
         dateChooser = new datechooser.beans.DateChooserCombo();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTextArea2 = new javax.swing.JTextArea();
 
         menu1.setLabel("File");
         menuBar1.add(menu1);
@@ -149,17 +150,6 @@ public class EventPanel extends javax.swing.JPanel {
         add(labelLocation, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 40, 140, -1));
         add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 30, 110, 10));
 
-        textFieldDescription.setBackground(new java.awt.Color(254, 254, 254));
-        textFieldDescription.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        textFieldDescription.setFont(new java.awt.Font("Waree", 1, 12)); // NOI18N
-        textFieldDescription.setText("Tell us about your event!");
-        textFieldDescription.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                textFieldDescriptionActionPerformed(evt);
-            }
-        });
-        add(textFieldDescription, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 140, 310, 60));
-
         dateChooser.setCurrentView(new datechooser.view.appearance.AppearancesList("Contrast",
             new datechooser.view.appearance.ViewAppearance("custom",
                 new datechooser.view.appearance.swing.SwingCellAppearance(new java.awt.Font("Ubuntu", java.awt.Font.PLAIN, 15),
@@ -210,20 +200,26 @@ public class EventPanel extends javax.swing.JPanel {
     jTextArea1.setBackground(new java.awt.Color(254, 254, 254));
     jTextArea1.setFont(new java.awt.Font("Waree", 0, 15)); // NOI18N
     jTextArea1.setForeground(new java.awt.Color(112, 110, 110));
-    jTextArea1.setText("Location goes here...");
+    jTextArea1.setText("Tell us about your event!");
     jScrollPane1.setViewportView(jTextArea1);
-    jTextArea1.getAccessibleContext().setAccessibleParent(null);
 
-    add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 30, 180, 30));
+    add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 140, 300, 60));
+
+    jScrollPane2.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+    jScrollPane2.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
+
+    jTextArea2.setBackground(new java.awt.Color(254, 254, 254));
+    jTextArea2.setFont(new java.awt.Font("Waree", 0, 15)); // NOI18N
+    jTextArea2.setForeground(new java.awt.Color(112, 110, 110));
+    jTextArea2.setText("Location goes here...");
+    jScrollPane2.setViewportView(jTextArea2);
+
+    add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 30, 180, 30));
     }// </editor-fold>//GEN-END:initComponents
 
     private void buttonWithdrawActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonWithdrawActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_buttonWithdrawActionPerformed
-
-    private void textFieldDescriptionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldDescriptionActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_textFieldDescriptionActionPerformed
 
     private void listAttendingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listAttendingActionPerformed
         // TODO add your handling code here:
@@ -240,12 +236,14 @@ public class EventPanel extends javax.swing.JPanel {
     private datechooser.beans.DateChooserCombo dateChooser;
     private javax.swing.JLabel defaultEventIcon;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTabbedPane jTabbedPane3;
     private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JTextArea jTextArea2;
     private javax.swing.JLabel labelDefaultImage;
     private javax.swing.JLabel labelDescription;
     private javax.swing.JLabel labelEvent;
@@ -263,6 +261,5 @@ public class EventPanel extends javax.swing.JPanel {
     private java.awt.MenuBar menuBar1;
     private java.awt.MenuBar menuBar2;
     private java.awt.MenuBar menuBar3;
-    private java.awt.TextField textFieldDescription;
     // End of variables declaration//GEN-END:variables
 }

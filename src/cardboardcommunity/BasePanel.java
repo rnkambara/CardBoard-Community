@@ -1,5 +1,9 @@
 package cardboardcommunity;
-
+import java.awt.Component;
+import java.awt.Container;
+import java.awt.Dimension;
+import java.awt.LayoutManager;
+import java.util.*;
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -71,11 +75,11 @@ public class BasePanel extends javax.swing.JPanel {
         panelScrollBox.setLayout(panelScrollBoxLayout);
         panelScrollBoxLayout.setHorizontalGroup(
             panelScrollBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 834, Short.MAX_VALUE)
+            .addGap(0, 926, Short.MAX_VALUE)
         );
         panelScrollBoxLayout.setVerticalGroup(
             panelScrollBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 843, Short.MAX_VALUE)
+            .addGap(0, 950, Short.MAX_VALUE)
         );
 
         scrollPane1.add(panelScrollBox);
@@ -90,8 +94,8 @@ public class BasePanel extends javax.swing.JPanel {
                 .addGap(28, 28, 28)
                 .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(scrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 850, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(102, Short.MAX_VALUE))
+                .addComponent(scrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 942, Short.MAX_VALUE)
+                .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -99,8 +103,8 @@ public class BasePanel extends javax.swing.JPanel {
                 .addGap(31, 31, 31)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(scrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jSeparator3, javax.swing.GroupLayout.DEFAULT_SIZE, 453, Short.MAX_VALUE))
-                .addContainerGap(26, Short.MAX_VALUE))
+                    .addComponent(jSeparator3, javax.swing.GroupLayout.DEFAULT_SIZE, 449, Short.MAX_VALUE))
+                .addContainerGap(30, Short.MAX_VALUE))
         );
 
         add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 230, 1030, 510));

@@ -37,7 +37,10 @@ public class groupPanel extends javax.swing.JPanel {
         listMembers = new java.awt.List();
         labelLocation = new javax.swing.JLabel();
         jSeparator4 = new javax.swing.JSeparator();
-        jSeparator5 = new javax.swing.JSeparator();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTextPane1 = new javax.swing.JTextPane();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
 
         setBackground(new java.awt.Color(101, 95, 123));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -91,7 +94,26 @@ public class groupPanel extends javax.swing.JPanel {
         labelLocation.setText("Location: ");
         add(labelLocation, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 20, 140, -1));
         add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 70, 110, 10));
-        add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 40, 320, 20));
+
+        jTextPane1.setBackground(new java.awt.Color(101, 95, 123));
+        jTextPane1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(101, 95, 123)));
+        jTextPane1.setFont(new java.awt.Font("Waree", 0, 15)); // NOI18N
+        jTextPane1.setForeground(new java.awt.Color(254, 254, 254));
+        jTextPane1.setText(" Rating Here...");
+        jScrollPane1.setViewportView(jTextPane1);
+
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 170, 200, 30));
+
+        jScrollPane3.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        jScrollPane3.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
+
+        jTextArea1.setBackground(new java.awt.Color(254, 254, 254));
+        jTextArea1.setFont(new java.awt.Font("Waree", 0, 15)); // NOI18N
+        jTextArea1.setForeground(new java.awt.Color(112, 110, 110));
+        jTextArea1.setText("Location goes here...");
+        jScrollPane3.setViewportView(jTextArea1);
+
+        add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 10, 180, 30));
     }// </editor-fold>//GEN-END:initComponents
 
     private void buttonWithdrawActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonWithdrawActionPerformed
@@ -107,8 +129,11 @@ public class groupPanel extends javax.swing.JPanel {
     private java.awt.Button buttonWithdraw;
     private javax.swing.JLabel defaultGroupIcon;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JSeparator jSeparator4;
-    private javax.swing.JSeparator jSeparator5;
+    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JTextPane jTextPane1;
     private javax.swing.JLabel labelDefaultImage;
     private javax.swing.JLabel labelGroupName;
     private javax.swing.JLabel labelLocation;

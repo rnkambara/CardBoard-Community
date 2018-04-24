@@ -1,5 +1,10 @@
 package cardboardcommunity;
 
+import java.sql.SQLException;
+import java.util.Collection;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -195,7 +200,13 @@ public class BasePanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void groupButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_groupButtonActionPerformed
-        // TODO add your handling code here:
+        try {
+            Collection<groupPanel> panels = groupPanel.readPanels(null, "TRUE");
+            
+        } catch (Exception ex) {
+            System.out.println("Oops");
+        }
+        
     }//GEN-LAST:event_groupButtonActionPerformed
 
 

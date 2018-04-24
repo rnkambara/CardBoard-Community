@@ -4,13 +4,55 @@
  * and open the template in the editor.
  */
 package cardboardcommunity;
-
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.List;
 /**
  *
  * @author rnkambara
  */
 public class groupPanel extends javax.swing.JPanel {
-
+    int id;
+    String name;
+    String location;
+    List<String> members;
+    
+    public void refresh(){
+        
+    }
+    
+    public static Collection<groupPanel> readPanels(Connection con, String whereClause) throws SQLException{
+        Statement s = con.createStatement();
+        s.addBatch("SELECT * FROM GROUP WHERE " + whereClause);
+        s.addBatch("SELECT USER, GROUPID FROM MEMBERSHIP, (SELECT ID FROM GROUP WHERE " + whereClause + ") "
+                + "WHERE GROUPID = ID"
+        );
+        s.executeBatch();
+        HashMap<Integer, groupPanel> map = new HashMap<>();
+        ResultSet groupRes = s.getResultSet();
+        while (groupRes.next()){
+            Integer id = groupRes.getInt("GROUPID");
+            groupPanel p = new groupPanel();
+            p.id = id;
+            map.put(id, p);
+            p.name = groupRes.getString("NAME");
+            p.location = groupRes.getString("LOCATION");
+            p.members = new ArrayList<String>();
+        }
+        s.getMoreResults();
+        ResultSet memberRes = s.getResultSet();
+        while (memberRes.next()){
+            groupPanel p = map.get(memberRes.getInt("GROUPID"));
+            p.members.add(memberRes.getString("membername")); //?
+        }
+        for (groupPanel p : map.values()){
+            p.refresh();
+        }
+        return map.values();
+    }
+    
     /**
      * Creates new form groupPanel
      */

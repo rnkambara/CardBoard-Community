@@ -43,6 +43,7 @@ public class EventPanel extends javax.swing.JPanel {
         labelDefaultImage = new javax.swing.JLabel();
         labelEvent = new javax.swing.JLabel();
         buttonWithdraw = new java.awt.Button();
+        defaultEventIcon = new javax.swing.JLabel();
         labelDescription = new javax.swing.JLabel();
         label_attending = new javax.swing.JLabel();
         labelTime = new javax.swing.JLabel();
@@ -83,8 +84,6 @@ public class EventPanel extends javax.swing.JPanel {
         leftPanelOrange.setBackground(new java.awt.Color(218, 2, 0));
         leftPanelOrange.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         leftPanelOrange.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        labelDefaultImage.setIcon(new javax.swing.ImageIcon("/home/rnkambara/Documents/cardboardCommunity/CardBoard-Community/images/default_event.png")); // NOI18N
         leftPanelOrange.add(labelDefaultImage, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, -1, -1));
 
         labelEvent.setFont(new java.awt.Font("Waree", 1, 14)); // NOI18N
@@ -104,6 +103,9 @@ public class EventPanel extends javax.swing.JPanel {
         });
         leftPanelOrange.add(buttonWithdraw, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 200, -1, 30));
         buttonWithdraw.getAccessibleContext().setAccessibleName("button_withdraw");
+
+        defaultEventIcon.setIcon(new javax.swing.ImageIcon("/home/rnkambara/Documents/CardBoard-Community/images/default_event.png")); // NOI18N
+        leftPanelOrange.add(defaultEventIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, -1, -1));
 
         add(leftPanelOrange, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 160, 230));
 
@@ -170,6 +172,7 @@ public class EventPanel extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private java.awt.Button buttonWithdraw;
+    private javax.swing.JLabel defaultEventIcon;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;

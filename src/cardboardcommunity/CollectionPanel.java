@@ -32,6 +32,7 @@ public class CollectionPanel extends javax.swing.JPanel {
         labelBoardgame = new javax.swing.JLabel();
         buttonRid = new java.awt.Button();
         jLabel1 = new javax.swing.JLabel();
+        defaultBoardgameIcon = new javax.swing.JLabel();
         labelRating = new javax.swing.JLabel();
         labelPlayerCount = new javax.swing.JLabel();
         jSeparator5 = new javax.swing.JSeparator();
@@ -67,9 +68,10 @@ public class CollectionPanel extends javax.swing.JPanel {
             }
         });
         leftPanelOrange.add(buttonRid, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 200, 80, 30));
-
-        jLabel1.setIcon(new javax.swing.ImageIcon("/home/rnkambara/Documents/cardboardCommunity/CardBoard-Community/images/default_boardgame.png")); // NOI18N
         leftPanelOrange.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, -1, -1));
+
+        defaultBoardgameIcon.setIcon(new javax.swing.ImageIcon("/home/rnkambara/Documents/CardBoard-Community/images/default_boardgame.png")); // NOI18N
+        leftPanelOrange.add(defaultBoardgameIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, -1, -1));
 
         add(leftPanelOrange, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 160, 230));
 
@@ -111,6 +113,7 @@ public class CollectionPanel extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private java.awt.Button buttonRid;
+    private javax.swing.JLabel defaultBoardgameIcon;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JSeparator jSeparator5;
     private javax.swing.JSeparator jSeparator6;

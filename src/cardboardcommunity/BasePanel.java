@@ -1,3 +1,5 @@
+package cardboardcommunity;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -44,6 +46,11 @@ public class BasePanel extends javax.swing.JPanel {
         jSeparator1 = new javax.swing.JSeparator();
         cardboardCommunityIcon = new javax.swing.JLabel();
         jSeparator2 = new javax.swing.JSeparator();
+        jSeparator4 = new javax.swing.JSeparator();
+        cbcIcon = new javax.swing.JLabel();
+        jSeparator5 = new javax.swing.JSeparator();
+        jSeparator6 = new javax.swing.JSeparator();
+        jSeparator7 = new javax.swing.JSeparator();
 
         menu1.setLabel("File");
         menuBar1.add(menu1);
@@ -84,7 +91,7 @@ public class BasePanel extends javax.swing.JPanel {
                 .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(scrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 850, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(192, Short.MAX_VALUE))
+                .addContainerGap(102, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -96,7 +103,7 @@ public class BasePanel extends javax.swing.JPanel {
                 .addContainerGap(26, Short.MAX_VALUE))
         );
 
-        add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 230, 1120, 510));
+        add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 230, 1030, 510));
 
         jPanel2.setBackground(new java.awt.Color(250, 240, 231));
 
@@ -163,52 +170,28 @@ public class BasePanel extends javax.swing.JPanel {
         add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 230, 180, 510));
 
         panel1.setBackground(new java.awt.Color(250, 240, 231));
+        panel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         labelCardboardCommunity.setFont(new java.awt.Font("Ubuntu Condensed", 0, 48)); // NOI18N
         labelCardboardCommunity.setForeground(new java.awt.Color(101, 95, 123));
         labelCardboardCommunity.setText("Cardboard Community");
+        panel1.add(labelCardboardCommunity, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 90, -1, -1));
 
         jSeparator1.setBackground(new java.awt.Color(101, 95, 123));
-
-        cardboardCommunityIcon.setIcon(new javax.swing.ImageIcon("/home/rnkambara/Documents/cardboardCommunity/CardBoard-Community/images/cardboard_community.png")); // NOI18N
+        panel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 223, 538, 12));
+        panel1.add(cardboardCommunityIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 71, -1, 193));
 
         jSeparator2.setBackground(new java.awt.Color(101, 95, 123));
+        panel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(697, 241, 538, -1));
+        panel1.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 170, 450, 10));
 
-        javax.swing.GroupLayout panel1Layout = new javax.swing.GroupLayout(panel1);
-        panel1.setLayout(panel1Layout);
-        panel1Layout.setHorizontalGroup(
-            panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(cardboardCommunityIcon)
-                .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panel1Layout.createSequentialGroup()
-                        .addGap(49, 49, 49)
-                        .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(labelCardboardCommunity)
-                            .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 538, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(panel1Layout.createSequentialGroup()
-                        .addGap(76, 76, 76)
-                        .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 538, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(506, Short.MAX_VALUE))
-        );
-        panel1Layout.setVerticalGroup(
-            panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(panel1Layout.createSequentialGroup()
-                        .addComponent(labelCardboardCommunity)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 12, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(11, 11, 11))
-                    .addComponent(cardboardCommunityIcon, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(37, 37, 37))
-        );
+        cbcIcon.setIcon(new javax.swing.ImageIcon("/home/rnkambara/Documents/CardBoard-Community/images/cardboard_community.png")); // NOI18N
+        panel1.add(cbcIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, -1, -1));
+        panel1.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 160, 450, 10));
+        panel1.add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 160, 450, 20));
+        panel1.add(jSeparator7, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 180, 450, 20));
 
-        add(panel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 214));
+        add(panel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 14, 1210, 200));
     }// </editor-fold>//GEN-END:initComponents
 
     private void groupButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_groupButtonActionPerformed
@@ -219,6 +202,7 @@ public class BasePanel extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JLabel cardboardCommunityIcon;
+    private javax.swing.JLabel cbcIcon;
     private java.awt.Button collectionButton;
     private java.awt.Button eventButton;
     private java.awt.Button groupButton;
@@ -228,6 +212,10 @@ public class BasePanel extends javax.swing.JPanel {
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
+    private javax.swing.JSeparator jSeparator4;
+    private javax.swing.JSeparator jSeparator5;
+    private javax.swing.JSeparator jSeparator6;
+    private javax.swing.JSeparator jSeparator7;
     private javax.swing.JLabel labelCardboardCommunity;
     private java.awt.Menu menu1;
     private java.awt.Menu menu2;

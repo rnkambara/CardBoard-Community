@@ -14,7 +14,7 @@ import java.util.List;
  *
  * @author rnkambara
  */
-public class groupPanel extends javax.swing.JPanel {
+public class groupPanel extends javax.swing.JPanel{
     int id;
     String name;
     String location;

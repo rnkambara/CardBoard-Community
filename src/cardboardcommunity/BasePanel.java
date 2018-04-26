@@ -28,6 +28,7 @@ public class BasePanel extends javax.swing.JPanel {
     public void fillScrollableArea(Collection<Component> panels)
     {
     	JButton test = new JButton("test");
+        scrollPanelBox.removeAll();
     	for(Component panel : panels)
     	{
           System.out.println("Should add... " + ((groupPanel)panel).name);
@@ -51,14 +52,17 @@ public class BasePanel extends javax.swing.JPanel {
         menu2 = new java.awt.Menu();
         buttonGroup1 = new javax.swing.ButtonGroup();
         jPanel4 = new javax.swing.JPanel();
-        scrollPane1 = new java.awt.ScrollPane();
-        scrollPanelBox = new javax.swing.JPanel();
         jSeparator3 = new javax.swing.JSeparator();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        scrollPanelBox = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
-        collectionButton = new java.awt.Button();
+        jTabbedPane1 = new javax.swing.JTabbedPane();
+        jPanel1 = new javax.swing.JPanel();
         homeButton = new java.awt.Button();
         eventButton = new java.awt.Button();
         groupButton = new java.awt.Button();
+        collectionButton = new java.awt.Button();
+        jPanel3 = new javax.swing.JPanel();
         panel1 = new java.awt.Panel();
         labelCardboardCommunity = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
@@ -80,54 +84,60 @@ public class BasePanel extends javax.swing.JPanel {
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel4.setBackground(new java.awt.Color(250, 240, 231));
-        scrollPanelBox.setBackground(new java.awt.Color(254, 254, 254));
-        scrollPanelBox.setLayout(new javax.swing.BoxLayout(scrollPanelBox, javax.swing.BoxLayout.Y_AXIS));
-        scrollPane1.add(scrollPanelBox);
 
         jSeparator3.setOrientation(javax.swing.SwingConstants.VERTICAL);
+
+        scrollPanelBox.setBackground(new java.awt.Color(254, 254, 254));
+        scrollPanelBox.setLayout(new javax.swing.BoxLayout(scrollPanelBox, javax.swing.BoxLayout.Y_AXIS));
+        jScrollPane1.setViewportView(scrollPanelBox);
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(28, 28, 28)
+                .addGap(39, 39, 39)
                 .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(32, 32, 32)
-                .addComponent(scrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 850, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(102, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 874, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(63, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(31, 31, 31)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(scrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jSeparator3, javax.swing.GroupLayout.DEFAULT_SIZE, 449, Short.MAX_VALUE))
-                .addContainerGap(30, Short.MAX_VALUE))
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 449, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 451, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(39, Short.MAX_VALUE))
         );
 
-        add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 230, 1030, 510));
+        add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 230, 1000, 510));
 
         jPanel2.setBackground(new java.awt.Color(250, 240, 231));
 
-        collectionButton.setActionCommand("collectionButton");
-        collectionButton.setBackground(new java.awt.Color(101, 95, 123));
-        collectionButton.setFont(new java.awt.Font("Waree", 1, 18)); // NOI18N
-        collectionButton.setForeground(new java.awt.Color(254, 254, 254));
-        collectionButton.setLabel("Collections");
+        jTabbedPane1.setBackground(new java.awt.Color(254, 254, 254));
+        jTabbedPane1.setFont(new java.awt.Font("Waree", 1, 15)); // NOI18N
+
+        jPanel1.setLayout(new javax.swing.BoxLayout(jPanel1, javax.swing.BoxLayout.Y_AXIS));
 
         homeButton.setActionCommand("homeButton");
         homeButton.setBackground(new java.awt.Color(101, 95, 123));
         homeButton.setFont(new java.awt.Font("Waree", 1, 18)); // NOI18N
         homeButton.setForeground(new java.awt.Color(254, 254, 254));
         homeButton.setLabel("Home");
+        jPanel1.add(homeButton);
 
         eventButton.setActionCommand("eventButton");
         eventButton.setBackground(new java.awt.Color(101, 95, 123));
         eventButton.setFont(new java.awt.Font("Waree", 1, 18)); // NOI18N
         eventButton.setForeground(new java.awt.Color(254, 254, 254));
         eventButton.setLabel("Events");
+        jPanel1.add(eventButton);
+        eventButton.getAccessibleContext().setAccessibleName("eventButton");
 
         groupButton.setActionCommand("groupButton");
         groupButton.setBackground(new java.awt.Color(101, 95, 123));
@@ -139,6 +149,33 @@ public class BasePanel extends javax.swing.JPanel {
                 groupButtonActionPerformed(evt);
             }
         });
+        jPanel1.add(groupButton);
+        groupButton.getAccessibleContext().setAccessibleName("groupButton");
+
+        collectionButton.setActionCommand("collectionButton");
+        collectionButton.setBackground(new java.awt.Color(101, 95, 123));
+        collectionButton.setFont(new java.awt.Font("Waree", 1, 18)); // NOI18N
+        collectionButton.setForeground(new java.awt.Color(254, 254, 254));
+        collectionButton.setLabel("Collections");
+        jPanel1.add(collectionButton);
+        collectionButton.getAccessibleContext().setAccessibleName("collectionButton");
+
+        jTabbedPane1.addTab("Main Tab", jPanel1);
+
+        jPanel3.setBackground(new java.awt.Color(254, 254, 254));
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 190, Short.MAX_VALUE)
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 402, Short.MAX_VALUE)
+        );
+
+        jTabbedPane1.addTab("Special ", jPanel3);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -146,32 +183,19 @@ public class BasePanel extends javax.swing.JPanel {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(homeButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(eventButton, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)
-                    .addComponent(groupButton, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)
-                    .addComponent(collectionButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+                .addComponent(jTabbedPane1))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addGap(42, 42, 42)
-                .addComponent(homeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(37, 37, 37)
-                .addComponent(eventButton, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
-                .addComponent(groupButton, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(37, 37, 37)
-                .addComponent(collectionButton, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(34, 34, 34))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jTabbedPane1)
+                .addGap(49, 49, 49))
         );
 
-        collectionButton.getAccessibleContext().setAccessibleName("collectionButton");
-        eventButton.getAccessibleContext().setAccessibleName("eventButton");
-        groupButton.getAccessibleContext().setAccessibleName("groupButton");
+        jTabbedPane1.getAccessibleContext().setAccessibleName("mainTab");
 
-        add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 230, 180, 510));
+        add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 230, 210, 510));
 
         panel1.setBackground(new java.awt.Color(250, 240, 231));
         panel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -199,15 +223,15 @@ public class BasePanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void groupButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_groupButtonActionPerformed
-    	Collection<Component> panels = null;
-    	try {
-             panels = groupPanel.readPanels(CardboardCommunity.connection, "GROUP_ID > -1");
-             CardboardCommunity.form.getBasePanel().fillScrollableArea(panels);
+        Collection<Component> panels = null;
+        try {
+            panels = groupPanel.readPanels(CardboardCommunity.connection, "GROUP_ID > -1");
+            CardboardCommunity.form.getBasePanel().fillScrollableArea(panels);
         } catch (Exception ex) {
-        	ex.printStackTrace();
+            ex.printStackTrace();
             System.out.println("Oops");
         }
-        
+
     }//GEN-LAST:event_groupButtonActionPerformed
 
 
@@ -219,8 +243,11 @@ public class BasePanel extends javax.swing.JPanel {
     private java.awt.Button eventButton;
     private java.awt.Button groupButton;
     private java.awt.Button homeButton;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
@@ -228,12 +255,12 @@ public class BasePanel extends javax.swing.JPanel {
     private javax.swing.JSeparator jSeparator5;
     private javax.swing.JSeparator jSeparator6;
     private javax.swing.JSeparator jSeparator7;
+    private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JLabel labelCardboardCommunity;
     private java.awt.Menu menu1;
     private java.awt.Menu menu2;
     private java.awt.MenuBar menuBar1;
     private java.awt.Panel panel1;
-    private java.awt.ScrollPane scrollPane1;
     private javax.swing.JPanel scrollPanelBox;
     // End of variables declaration//GEN-END:variables
 }

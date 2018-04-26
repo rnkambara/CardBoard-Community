@@ -17,6 +17,8 @@ public class EventPanel extends javax.swing.JPanel {
     public EventPanel() {
         initComponents();
     }
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.

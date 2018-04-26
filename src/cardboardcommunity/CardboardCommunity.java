@@ -9,7 +9,7 @@ import static helpers.Configuration.JDBC_URL;
 
 public class CardboardCommunity {
 	static Connection connection;
- 	static baseForm form;
+ 	static BaseForm form;
 	 public static void startConnection() throws SQLException
 	 {
 		System.out.println("Connecting...");
@@ -35,7 +35,7 @@ public class CardboardCommunity {
             System.out.println("Connection unable to start...");
         }
         
-        form = new baseForm();
+        form = new BaseForm();
         form.setVisible(true);
     }
     

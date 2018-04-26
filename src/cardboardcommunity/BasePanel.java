@@ -108,7 +108,7 @@ public class BasePanel extends javax.swing.JPanel {
                 .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 874, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(23, Short.MAX_VALUE))
+                .addContainerGap(83, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -120,7 +120,7 @@ public class BasePanel extends javax.swing.JPanel {
                 .addContainerGap(100, Short.MAX_VALUE))
         );
 
-        add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 230, 960, 620));
+        add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 230, 1020, 620));
 
         jPanel2.setBackground(new java.awt.Color(250, 240, 231));
 
@@ -297,7 +297,7 @@ public class BasePanel extends javax.swing.JPanel {
         panel1.add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 160, 450, 20));
         panel1.add(jSeparator7, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 180, 450, 20));
 
-        add(panel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 14, 1210, 200));
+        add(panel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 14, 1270, 200));
     }// </editor-fold>//GEN-END:initComponents
 
     private void groupButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_groupButtonActionPerformed

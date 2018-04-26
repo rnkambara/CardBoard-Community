@@ -53,6 +53,11 @@ public class baseForm extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    public BasePanel getBasePanel()
+    {
+    	return basePanel1;
+    }
+    
     /**
      * @param args the command line arguments
      */

@@ -5,6 +5,7 @@ import java.util.Collection;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.awt.Component; 
+import javax.swing.JButton;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -27,13 +28,13 @@ public class BasePanel extends javax.swing.JPanel {
     
     public void fillScrollableArea(Collection<Component> panels)
     {
-//    	javax.swing.GroupLayout panelScrollBoxLayout = new javax.swing.GroupLayout(panelScrollBox);
-//    	panelScrollBox.setLayout(panelScrollBoxLayout);
-    	
+    	JButton test = new JButton("test");
     	for(Component panel : panels)
     	{
           System.out.println("Should add... " + ((groupPanel)panel).name);
+          scrollPanelBox.add(panel);
     	}
+    	CardboardCommunity.form.validate();
     	
     }
 
@@ -52,7 +53,7 @@ public class BasePanel extends javax.swing.JPanel {
         buttonGroup1 = new javax.swing.ButtonGroup();
         jPanel4 = new javax.swing.JPanel();
         scrollPane1 = new java.awt.ScrollPane();
-        panelScrollBox = new javax.swing.JPanel();
+        scrollPanelBox = new javax.swing.JPanel();
         jSeparator3 = new javax.swing.JSeparator();
         jPanel2 = new javax.swing.JPanel();
         collectionButton = new java.awt.Button();
@@ -81,10 +82,9 @@ public class BasePanel extends javax.swing.JPanel {
 
         jPanel4.setBackground(new java.awt.Color(250, 240, 231));
 
-        panelScrollBox.setBackground(new java.awt.Color(254, 254, 254));
-        panelScrollBox.setForeground(new java.awt.Color(254, 254, 254));
-        panelScrollBox.setAlignmentX(0.0F);
-        scrollPane1.add(panelScrollBox);
+        scrollPanelBox.setBackground(new java.awt.Color(254, 254, 254));
+        scrollPanelBox.setLayout(new javax.swing.BoxLayout(scrollPanelBox, javax.swing.BoxLayout.Y_AXIS));
+        scrollPane1.add(scrollPanelBox);
 
         jSeparator3.setOrientation(javax.swing.SwingConstants.VERTICAL);
 
@@ -94,8 +94,8 @@ public class BasePanel extends javax.swing.JPanel {
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGap(28, 28, 28)
-                .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(32, 32, 32)
                 .addComponent(scrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 850, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(102, Short.MAX_VALUE))
         );
@@ -105,8 +105,8 @@ public class BasePanel extends javax.swing.JPanel {
                 .addGap(31, 31, 31)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(scrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jSeparator3, javax.swing.GroupLayout.DEFAULT_SIZE, 453, Short.MAX_VALUE))
-                .addContainerGap(26, Short.MAX_VALUE))
+                    .addComponent(jSeparator3, javax.swing.GroupLayout.DEFAULT_SIZE, 449, Short.MAX_VALUE))
+                .addContainerGap(30, Short.MAX_VALUE))
         );
 
         add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 230, 1030, 510));
@@ -204,7 +204,7 @@ public class BasePanel extends javax.swing.JPanel {
     	Collection<Component> panels = null;
     	try {
              panels = groupPanel.readPanels(CardboardCommunity.connection, "GROUP_ID > -1");
-             //fillScrollableArea(panels);
+             CardboardCommunity.form.getBasePanel().fillScrollableArea(panels);
         } catch (Exception ex) {
         	ex.printStackTrace();
             System.out.println("Oops");
@@ -235,7 +235,7 @@ public class BasePanel extends javax.swing.JPanel {
     private java.awt.Menu menu2;
     private java.awt.MenuBar menuBar1;
     private java.awt.Panel panel1;
-    private javax.swing.JPanel panelScrollBox;
     private java.awt.ScrollPane scrollPane1;
+    private javax.swing.JPanel scrollPanelBox;
     // End of variables declaration//GEN-END:variables
 }

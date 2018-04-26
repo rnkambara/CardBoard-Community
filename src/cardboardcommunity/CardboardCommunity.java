@@ -8,8 +8,8 @@ import java.sql.*;
 import static helpers.Configuration.JDBC_URL;
 
 public class CardboardCommunity {
- static Connection connection;
- 	static BasePanel basePanel;
+	static Connection connection;
+ 	static baseForm form;
 	 public static void startConnection() throws SQLException
 	 {
 		System.out.println("Connecting...");
@@ -35,7 +35,8 @@ public class CardboardCommunity {
             System.out.println("Connection unable to start...");
         }
         
-        new baseForm().setVisible(true);
+        form = new baseForm();
+        form.setVisible(true);
     }
     
 }

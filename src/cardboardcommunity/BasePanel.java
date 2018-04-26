@@ -4,6 +4,7 @@ import java.sql.SQLException;
 import java.util.Collection;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.awt.Component; 
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -22,6 +23,18 @@ public class BasePanel extends javax.swing.JPanel {
      */
     public BasePanel() {
         initComponents();
+    }
+    
+    public void fillScrollableArea(Collection<Component> panels)
+    {
+//    	javax.swing.GroupLayout panelScrollBoxLayout = new javax.swing.GroupLayout(panelScrollBox);
+//    	panelScrollBox.setLayout(panelScrollBoxLayout);
+    	
+    	for(Component panel : panels)
+    	{
+          System.out.println("Should add... " + ((groupPanel)panel).name);
+    	}
+    	
     }
 
     /**
@@ -71,18 +84,6 @@ public class BasePanel extends javax.swing.JPanel {
         panelScrollBox.setBackground(new java.awt.Color(254, 254, 254));
         panelScrollBox.setForeground(new java.awt.Color(254, 254, 254));
         panelScrollBox.setAlignmentX(0.0F);
-
-        javax.swing.GroupLayout panelScrollBoxLayout = new javax.swing.GroupLayout(panelScrollBox);
-        panelScrollBox.setLayout(panelScrollBoxLayout);
-        panelScrollBoxLayout.setHorizontalGroup(
-            panelScrollBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 834, Short.MAX_VALUE)
-        );
-        panelScrollBoxLayout.setVerticalGroup(
-            panelScrollBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 843, Short.MAX_VALUE)
-        );
-
         scrollPane1.add(panelScrollBox);
 
         jSeparator3.setOrientation(javax.swing.SwingConstants.VERTICAL);
@@ -200,10 +201,12 @@ public class BasePanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void groupButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_groupButtonActionPerformed
-        try {
-            Collection<groupPanel> panels = groupPanel.readPanels(null, "TRUE");
-            
+    	Collection<Component> panels = null;
+    	try {
+             panels = groupPanel.readPanels(CardboardCommunity.connection, "GROUP_ID > -1");
+             //fillScrollableArea(panels);
         } catch (Exception ex) {
+        	ex.printStackTrace();
             System.out.println("Oops");
         }
         

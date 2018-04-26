@@ -69,7 +69,8 @@ public class BasePanel extends javax.swing.JPanel {
         groupCollection = new java.awt.Button();
         recommendedGames = new java.awt.Button();
         gameNightRecommendation = new java.awt.Button();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        userComboBox = new javax.swing.JComboBox<>();
+        jLabel1 = new javax.swing.JLabel();
         panel1 = new java.awt.Panel();
         labelCardboardCommunity = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
@@ -107,22 +108,19 @@ public class BasePanel extends javax.swing.JPanel {
                 .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 874, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(43, Short.MAX_VALUE))
+                .addContainerGap(23, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 449, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 451, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(39, Short.MAX_VALUE))
+                .addContainerGap()
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 508, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(100, Short.MAX_VALUE))
         );
 
-        add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 230, 980, 510));
+        add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 230, 960, 620));
 
         jPanel2.setBackground(new java.awt.Color(250, 240, 231));
 
@@ -240,7 +238,13 @@ public class BasePanel extends javax.swing.JPanel {
 
         tab.addTab("\"Unique\"", jPanel3);
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "rnkambara@mix.wvu.edu", "adentrekin@mix.wvu.edu", "arMccalley@mix.wvu.edu" }));
+        userComboBox.setBackground(new java.awt.Color(254, 254, 254));
+        userComboBox.setFont(new java.awt.Font("Waree", 0, 15)); // NOI18N
+        userComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "rnkambara@mix.wvu.edu", "adentrekin@mix.wvu.edu", "arMccalley@mix.wvu.edu" }));
+
+        jLabel1.setFont(new java.awt.Font("Waree", 1, 15)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(101, 95, 123));
+        jLabel1.setText("Select a User");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -248,24 +252,28 @@ public class BasePanel extends javax.swing.JPanel {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(tab, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(tab, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(userComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jLabel1))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(tab)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(tab, javax.swing.GroupLayout.DEFAULT_SIZE, 490, Short.MAX_VALUE)
+                .addGap(27, 27, 27)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(userComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(16, 16, 16))
         );
 
         tab.getAccessibleContext().setAccessibleName("mainTab");
 
-        add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 230, 230, 510));
+        add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 230, 250, 620));
 
         panel1.setBackground(new java.awt.Color(250, 240, 231));
         panel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -358,7 +366,7 @@ public class BasePanel extends javax.swing.JPanel {
     private java.awt.Button groupButton;
     private java.awt.Button groupCollection;
     private java.awt.Button homeButton;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -379,5 +387,6 @@ public class BasePanel extends javax.swing.JPanel {
     private java.awt.Button recommendedGames;
     private javax.swing.JPanel scrollPanelBox;
     private javax.swing.JTabbedPane tab;
+    private javax.swing.JComboBox<String> userComboBox;
     // End of variables declaration//GEN-END:variables
 }

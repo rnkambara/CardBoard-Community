@@ -5,12 +5,28 @@
  */
 package cardboardcommunity;
 
+import java.awt.Component;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.List;
+
 /**
  *
  * @author rnkambara
  */
 public class EventPanel extends javax.swing.JPanel {
-
+    int event_id;
+    String location;
+    String startTime;
+    String endTime;
+    String title;
+    List<String> attending;
+    
     /**
      * Creates new form BasePanel
      */
@@ -18,7 +34,53 @@ public class EventPanel extends javax.swing.JPanel {
         initComponents();
     }
     
+    public void refresh() throws SQLException{
+        labelEvent.setText(title);
+        locationText.setText(location);
+        startText.setText(startTime);
+        endText.setText(endTime);
+        
+        for(String attender : attending)
+        {
+            listAttending.add(attender);
+        }
+    }
     
+    public static Collection<Component> readPanels(Connection con, String whereClause) throws SQLException
+    {
+     Statement s1 = con.createStatement();
+        Statement s2 = con.createStatement();
+        s1.executeQuery("SELECT * FROM EVENT");
+        s2.executeQuery("SELECT E.EVENT_ID, ATTENDING_EMAIL FROM ATTENDING A, EVENT E WHERE E.EVENT_ID = A.EVENT_ID");  
+       
+        HashMap<Integer, Component> map = new HashMap<>();
+        ResultSet groupRes = s1.getResultSet();
+        
+        while (groupRes.next())
+        {
+            EventPanel p = new EventPanel(); 
+            p.event_id = groupRes.getInt("EVENT_ID");
+            p.title = groupRes.getString("TITLE");
+            p.location = groupRes.getString("LOCATION");
+            p.startTime = groupRes.getString("START_TIME");
+            p.endTime = groupRes.getString("END_TIME");
+            p.attending = new ArrayList<String>();
+            map.put(p.event_id, p);
+        }
+        
+        ResultSet memberRes = s2.getResultSet();
+        while (memberRes.next())
+        {
+            EventPanel p = (EventPanel)map.get(memberRes.getInt("EVENT_ID"));
+            p.attending.add(memberRes.getString("ATTENDING_EMAIL")); 
+        }
+        
+        for (Component p : map.values())
+        {
+            ((EventPanel)p).refresh();
+        }
+        return map.values();   
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -48,9 +110,10 @@ public class EventPanel extends javax.swing.JPanel {
         basicDatePickerUI5 = new org.jdesktop.swingx.plaf.basic.BasicDatePickerUI();
         leftPanelOrange = new javax.swing.JPanel();
         labelDefaultImage = new javax.swing.JLabel();
-        labelEvent = new javax.swing.JLabel();
         buttonWithdraw = new java.awt.Button();
         defaultEventIcon = new javax.swing.JLabel();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        labelEvent = new javax.swing.JTextArea();
         labelDescription = new javax.swing.JLabel();
         label_attending = new javax.swing.JLabel();
         labelTime = new javax.swing.JLabel();
@@ -58,11 +121,15 @@ public class EventPanel extends javax.swing.JPanel {
         listAttending = new java.awt.List();
         labelLocation = new javax.swing.JLabel();
         jSeparator4 = new javax.swing.JSeparator();
-        dateChooser = new datechooser.beans.DateChooserCombo();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTextArea2 = new javax.swing.JTextArea();
+        startText = new javax.swing.JTextArea();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        locationText = new javax.swing.JTextArea();
+        labelTime1 = new javax.swing.JLabel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        endText = new javax.swing.JTextArea();
 
         menu1.setLabel("File");
         menuBar1.add(menu1);
@@ -87,18 +154,13 @@ public class EventPanel extends javax.swing.JPanel {
 
         setBackground(new java.awt.Color(101, 95, 123));
         setFont(new java.awt.Font("Liberation Mono", 0, 15)); // NOI18N
-        setMaximumSize(new java.awt.Dimension(660, 230));
+        setMaximumSize(new java.awt.Dimension(2147483647, 2147483647));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         leftPanelOrange.setBackground(new java.awt.Color(218, 2, 0));
         leftPanelOrange.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         leftPanelOrange.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         leftPanelOrange.add(labelDefaultImage, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, -1, -1));
-
-        labelEvent.setFont(new java.awt.Font("Waree", 1, 14)); // NOI18N
-        labelEvent.setForeground(new java.awt.Color(253, 251, 251));
-        labelEvent.setText("Event Name");
-        leftPanelOrange.add(labelEvent, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, -1, -1));
 
         buttonWithdraw.setBackground(new java.awt.Color(218, 2, 0));
         buttonWithdraw.setFont(new java.awt.Font("Waree", 1, 12)); // NOI18N
@@ -110,18 +172,39 @@ public class EventPanel extends javax.swing.JPanel {
                 buttonWithdrawActionPerformed(evt);
             }
         });
-        leftPanelOrange.add(buttonWithdraw, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 200, -1, 30));
+        leftPanelOrange.add(buttonWithdraw, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 210, -1, 30));
         buttonWithdraw.getAccessibleContext().setAccessibleName("button_withdraw");
 
         defaultEventIcon.setIcon(new javax.swing.ImageIcon("/home/rnkambara/Documents/CardBoard-Community/images/default_event.png")); // NOI18N
         leftPanelOrange.add(defaultEventIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, -1, -1));
 
-        add(leftPanelOrange, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 160, 230));
+        jScrollPane5.setBackground(new java.awt.Color(101, 95, 123));
+        jScrollPane5.setBorder(null);
+        jScrollPane5.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        jScrollPane5.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
+        jScrollPane5.setViewportBorder(null);
+        jScrollPane5.setEnabled(false);
+        jScrollPane5.setOpaque(false);
+
+        labelEvent.setBackground(new java.awt.Color(218, 2, 0));
+        labelEvent.setColumns(20);
+        labelEvent.setFont(new java.awt.Font("Waree", 1, 15)); // NOI18N
+        labelEvent.setForeground(new java.awt.Color(254, 254, 254));
+        labelEvent.setLineWrap(true);
+        labelEvent.setRows(5);
+        labelEvent.setText("Board Game");
+        labelEvent.setWrapStyleWord(true);
+        labelEvent.setBorder(null);
+        jScrollPane5.setViewportView(labelEvent);
+
+        leftPanelOrange.add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 150, 50));
+
+        add(leftPanelOrange, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 160, 240));
 
         labelDescription.setFont(new java.awt.Font("Waree", 1, 14)); // NOI18N
         labelDescription.setForeground(new java.awt.Color(253, 251, 251));
         labelDescription.setText("Description");
-        add(labelDescription, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 110, 140, -1));
+        add(labelDescription, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 120, 140, -1));
 
         label_attending.setFont(new java.awt.Font("Waree", 1, 14)); // NOI18N
         label_attending.setForeground(new java.awt.Color(253, 251, 251));
@@ -130,8 +213,8 @@ public class EventPanel extends javax.swing.JPanel {
 
         labelTime.setFont(new java.awt.Font("Waree", 1, 14)); // NOI18N
         labelTime.setForeground(new java.awt.Color(253, 251, 251));
-        labelTime.setText("Date: ");
-        add(labelTime, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 80, 140, -1));
+        labelTime.setText("Start Time : ");
+        add(labelTime, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 60, 140, 20));
         add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 210, 320, 10));
 
         listAttending.setBackground(new java.awt.Color(254, 254, 254));
@@ -144,79 +227,62 @@ public class EventPanel extends javax.swing.JPanel {
                 listAttendingActionPerformed(evt);
             }
         });
-        add(listAttending, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 40, 130, 180));
+        add(listAttending, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 40, 200, 180));
 
         labelLocation.setFont(new java.awt.Font("Waree", 1, 14)); // NOI18N
         labelLocation.setForeground(new java.awt.Color(253, 251, 251));
         labelLocation.setText("Location: ");
-        add(labelLocation, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 40, 140, -1));
+        add(labelLocation, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 20, 140, -1));
         add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 30, 110, 10));
 
-        dateChooser.setCurrentView(new datechooser.view.appearance.AppearancesList("Contrast",
-            new datechooser.view.appearance.ViewAppearance("custom",
-                new datechooser.view.appearance.swing.SwingCellAppearance(new java.awt.Font("Ubuntu", java.awt.Font.PLAIN, 15),
-                    new java.awt.Color(76, 76, 76),
-                    new java.awt.Color(0, 0, 255),
-                    false,
-                    true,
-                    new datechooser.view.appearance.swing.ButtonPainter()),
-                new datechooser.view.appearance.swing.SwingCellAppearance(new java.awt.Font("Ubuntu", java.awt.Font.PLAIN, 15),
-                    new java.awt.Color(76, 76, 76),
-                    new java.awt.Color(0, 0, 255),
-                    true,
-                    true,
-                    new datechooser.view.appearance.swing.ButtonPainter()),
-                new datechooser.view.appearance.swing.SwingCellAppearance(new java.awt.Font("Ubuntu", java.awt.Font.PLAIN, 15),
-                    new java.awt.Color(0, 0, 255),
-                    new java.awt.Color(0, 0, 255),
-                    false,
-                    true,
-                    new datechooser.view.appearance.swing.ButtonPainter()),
-                new datechooser.view.appearance.swing.SwingCellAppearance(new java.awt.Font("Ubuntu", java.awt.Font.PLAIN, 15),
-                    new java.awt.Color(128, 128, 128),
-                    new java.awt.Color(0, 0, 255),
-                    false,
-                    true,
-                    new datechooser.view.appearance.swing.LabelPainter()),
-                new datechooser.view.appearance.swing.SwingCellAppearance(new java.awt.Font("Ubuntu", java.awt.Font.PLAIN, 15),
-                    new java.awt.Color(76, 76, 76),
-                    new java.awt.Color(0, 0, 255),
-                    false,
-                    true,
-                    new datechooser.view.appearance.swing.LabelPainter()),
-                new datechooser.view.appearance.swing.SwingCellAppearance(new java.awt.Font("Ubuntu", java.awt.Font.PLAIN, 15),
-                    new java.awt.Color(76, 76, 76),
-                    new java.awt.Color(255, 0, 0),
-                    false,
-                    false,
-                    new datechooser.view.appearance.swing.ButtonPainter()),
-                (datechooser.view.BackRenderer)null,
-                false,
-                true)));
-    dateChooser.setCalendarBackground(new java.awt.Color(1, 1, 1));
-    add(dateChooser, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 80, -1, -1));
+        jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        jScrollPane1.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
 
-    jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-    jScrollPane1.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
+        jTextArea1.setBackground(new java.awt.Color(254, 254, 254));
+        jTextArea1.setFont(new java.awt.Font("Waree", 0, 15)); // NOI18N
+        jTextArea1.setForeground(new java.awt.Color(112, 110, 110));
+        jTextArea1.setText("Tell us about your event!");
+        jScrollPane1.setViewportView(jTextArea1);
 
-    jTextArea1.setBackground(new java.awt.Color(254, 254, 254));
-    jTextArea1.setFont(new java.awt.Font("Waree", 0, 15)); // NOI18N
-    jTextArea1.setForeground(new java.awt.Color(112, 110, 110));
-    jTextArea1.setText("Tell us about your event!");
-    jScrollPane1.setViewportView(jTextArea1);
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 150, 300, 60));
 
-    add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 140, 300, 60));
+        jScrollPane2.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        jScrollPane2.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
 
-    jScrollPane2.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-    jScrollPane2.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
+        startText.setBackground(new java.awt.Color(254, 254, 254));
+        startText.setFont(new java.awt.Font("Waree", 0, 15)); // NOI18N
+        startText.setForeground(new java.awt.Color(112, 110, 110));
+        startText.setText("Start Time here...");
+        jScrollPane2.setViewportView(startText);
 
-    jTextArea2.setBackground(new java.awt.Color(254, 254, 254));
-    jTextArea2.setFont(new java.awt.Font("Waree", 0, 15)); // NOI18N
-    jTextArea2.setForeground(new java.awt.Color(112, 110, 110));
-    jTextArea2.setText("Location goes here...");
-    jScrollPane2.setViewportView(jTextArea2);
+        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 50, 180, 30));
 
-    add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 30, 180, 30));
+        jScrollPane3.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        jScrollPane3.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
+
+        locationText.setBackground(new java.awt.Color(254, 254, 254));
+        locationText.setFont(new java.awt.Font("Waree", 0, 15)); // NOI18N
+        locationText.setForeground(new java.awt.Color(112, 110, 110));
+        locationText.setText("Location goes here...");
+        jScrollPane3.setViewportView(locationText);
+
+        add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 10, 180, 30));
+
+        labelTime1.setFont(new java.awt.Font("Waree", 1, 14)); // NOI18N
+        labelTime1.setForeground(new java.awt.Color(253, 251, 251));
+        labelTime1.setText("End Time : ");
+        add(labelTime1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 100, 140, 20));
+
+        jScrollPane4.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        jScrollPane4.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
+
+        endText.setBackground(new java.awt.Color(254, 254, 254));
+        endText.setFont(new java.awt.Font("Waree", 0, 15)); // NOI18N
+        endText.setForeground(new java.awt.Color(112, 110, 110));
+        endText.setText("End Time here...");
+        jScrollPane4.setViewportView(endText);
+
+        add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 90, 180, 30));
     }// </editor-fold>//GEN-END:initComponents
 
     private void buttonWithdrawActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonWithdrawActionPerformed
@@ -235,25 +301,29 @@ public class EventPanel extends javax.swing.JPanel {
     private org.jdesktop.swingx.plaf.basic.BasicDatePickerUI basicDatePickerUI4;
     private org.jdesktop.swingx.plaf.basic.BasicDatePickerUI basicDatePickerUI5;
     private java.awt.Button buttonWithdraw;
-    private datechooser.beans.DateChooserCombo dateChooser;
     private javax.swing.JLabel defaultEventIcon;
+    private javax.swing.JTextArea endText;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTabbedPane jTabbedPane3;
     private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextArea jTextArea2;
     private javax.swing.JLabel labelDefaultImage;
     private javax.swing.JLabel labelDescription;
-    private javax.swing.JLabel labelEvent;
+    private javax.swing.JTextArea labelEvent;
     private javax.swing.JLabel labelLocation;
     private javax.swing.JLabel labelTime;
+    private javax.swing.JLabel labelTime1;
     private javax.swing.JLabel label_attending;
     private javax.swing.JPanel leftPanelOrange;
     private java.awt.List listAttending;
+    private javax.swing.JTextArea locationText;
     private java.awt.Menu menu1;
     private java.awt.Menu menu2;
     private java.awt.Menu menu3;
@@ -263,5 +333,6 @@ public class EventPanel extends javax.swing.JPanel {
     private java.awt.MenuBar menuBar1;
     private java.awt.MenuBar menuBar2;
     private java.awt.MenuBar menuBar3;
+    private javax.swing.JTextArea startText;
     // End of variables declaration//GEN-END:variables
 }

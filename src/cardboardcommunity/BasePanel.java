@@ -5,6 +5,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.awt.Component; 
 import javax.swing.JButton;
+import javax.swing.JToolBar;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -27,15 +28,16 @@ public class BasePanel extends javax.swing.JPanel {
     
     public void fillScrollableArea(Collection<Component> panels)
     {
-    	JButton test = new JButton("test");
         scrollPanelBox.removeAll();
-    	for(Component panel : panels)
-    	{
-          System.out.println("Should add... " + ((groupPanel)panel).name);
-          scrollPanelBox.add(panel);
-    	}
+        if(panels != null)
+        {
+          for(Component panel : panels)
+          {
+            scrollPanelBox.add(panel);
+            scrollPanelBox.add(new JToolBar.Separator());
+          }
+        }
     	CardboardCommunity.form.validate();
-    	
     }
 
     /**
@@ -56,13 +58,17 @@ public class BasePanel extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         scrollPanelBox = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
-        jTabbedPane1 = new javax.swing.JTabbedPane();
+        tab = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
         homeButton = new java.awt.Button();
         eventButton = new java.awt.Button();
         groupButton = new java.awt.Button();
         collectionButton = new java.awt.Button();
         jPanel3 = new javax.swing.JPanel();
+        globalRatings = new java.awt.Button();
+        groupCollection = new java.awt.Button();
+        recommendedGames = new java.awt.Button();
+        gameNightRecommendation = new java.awt.Button();
         panel1 = new java.awt.Panel();
         labelCardboardCommunity = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
@@ -100,7 +106,7 @@ public class BasePanel extends javax.swing.JPanel {
                 .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 874, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(63, Short.MAX_VALUE))
+                .addContainerGap(43, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -115,12 +121,12 @@ public class BasePanel extends javax.swing.JPanel {
                 .addContainerGap(39, Short.MAX_VALUE))
         );
 
-        add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 230, 1000, 510));
+        add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 230, 980, 510));
 
         jPanel2.setBackground(new java.awt.Color(250, 240, 231));
 
-        jTabbedPane1.setBackground(new java.awt.Color(254, 254, 254));
-        jTabbedPane1.setFont(new java.awt.Font("Waree", 1, 15)); // NOI18N
+        tab.setBackground(new java.awt.Color(254, 254, 254));
+        tab.setFont(new java.awt.Font("Waree", 1, 15)); // NOI18N
 
         jPanel1.setLayout(new javax.swing.BoxLayout(jPanel1, javax.swing.BoxLayout.Y_AXIS));
 
@@ -129,6 +135,11 @@ public class BasePanel extends javax.swing.JPanel {
         homeButton.setFont(new java.awt.Font("Waree", 1, 18)); // NOI18N
         homeButton.setForeground(new java.awt.Color(254, 254, 254));
         homeButton.setLabel("Home");
+        homeButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                homeButtonActionPerformed(evt);
+            }
+        });
         jPanel1.add(homeButton);
 
         eventButton.setActionCommand("eventButton");
@@ -136,6 +147,11 @@ public class BasePanel extends javax.swing.JPanel {
         eventButton.setFont(new java.awt.Font("Waree", 1, 18)); // NOI18N
         eventButton.setForeground(new java.awt.Color(254, 254, 254));
         eventButton.setLabel("Events");
+        eventButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                eventButtonActionPerformed(evt);
+            }
+        });
         jPanel1.add(eventButton);
         eventButton.getAccessibleContext().setAccessibleName("eventButton");
 
@@ -157,25 +173,71 @@ public class BasePanel extends javax.swing.JPanel {
         collectionButton.setFont(new java.awt.Font("Waree", 1, 18)); // NOI18N
         collectionButton.setForeground(new java.awt.Color(254, 254, 254));
         collectionButton.setLabel("Collections");
+        collectionButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                collectionButtonActionPerformed(evt);
+            }
+        });
         jPanel1.add(collectionButton);
         collectionButton.getAccessibleContext().setAccessibleName("collectionButton");
 
-        jTabbedPane1.addTab("Main Tab", jPanel1);
+        tab.addTab("Main Tab", jPanel1);
 
         jPanel3.setBackground(new java.awt.Color(254, 254, 254));
+        jPanel3.setLayout(new javax.swing.BoxLayout(jPanel3, javax.swing.BoxLayout.Y_AXIS));
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 190, Short.MAX_VALUE)
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 402, Short.MAX_VALUE)
-        );
+        globalRatings.setActionCommand("globalRatings");
+        globalRatings.setBackground(new java.awt.Color(101, 95, 123));
+        globalRatings.setFont(new java.awt.Font("Waree", 1, 18)); // NOI18N
+        globalRatings.setForeground(new java.awt.Color(254, 254, 254));
+        globalRatings.setLabel("Global  Ratings");
+        globalRatings.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                globalRatingsActionPerformed(evt);
+            }
+        });
+        jPanel3.add(globalRatings);
+        globalRatings.getAccessibleContext().setAccessibleName("globalRatings");
 
-        jTabbedPane1.addTab("Special ", jPanel3);
+        groupCollection.setActionCommand("groupCollection");
+        groupCollection.setBackground(new java.awt.Color(101, 95, 123));
+        groupCollection.setFont(new java.awt.Font("Waree", 1, 18)); // NOI18N
+        groupCollection.setForeground(new java.awt.Color(254, 254, 254));
+        groupCollection.setLabel("Group Collection");
+        groupCollection.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                groupCollectionActionPerformed(evt);
+            }
+        });
+        jPanel3.add(groupCollection);
+        groupCollection.getAccessibleContext().setAccessibleName("groupCollection");
+
+        recommendedGames.setActionCommand("recommendedGames");
+        recommendedGames.setBackground(new java.awt.Color(101, 95, 123));
+        recommendedGames.setFont(new java.awt.Font("Waree", 1, 18)); // NOI18N
+        recommendedGames.setForeground(new java.awt.Color(254, 254, 254));
+        recommendedGames.setLabel("Recommend Games");
+        recommendedGames.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                recommendedGamesActionPerformed(evt);
+            }
+        });
+        jPanel3.add(recommendedGames);
+
+        gameNightRecommendation.setActionCommand("gameNightRecommendation");
+        gameNightRecommendation.setBackground(new java.awt.Color(101, 95, 123));
+        gameNightRecommendation.setFont(new java.awt.Font("Waree", 1, 18)); // NOI18N
+        gameNightRecommendation.setForeground(new java.awt.Color(254, 254, 254));
+        gameNightRecommendation.setLabel("Game Night");
+        gameNightRecommendation.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                gameNightRecommendationActionPerformed(evt);
+            }
+        });
+        jPanel3.add(gameNightRecommendation);
+        gameNightRecommendation.getAccessibleContext().setAccessibleName(" Game Night");
+
+        tab.addTab("\"Unique\"", jPanel3);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -183,19 +245,20 @@ public class BasePanel extends javax.swing.JPanel {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTabbedPane1))
+                .addComponent(tab, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTabbedPane1)
+                .addComponent(tab)
                 .addGap(49, 49, 49))
         );
 
-        jTabbedPane1.getAccessibleContext().setAccessibleName("mainTab");
+        tab.getAccessibleContext().setAccessibleName("mainTab");
 
-        add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 230, 210, 510));
+        add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 230, 230, 510));
 
         panel1.setBackground(new java.awt.Color(250, 240, 231));
         panel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -234,6 +297,48 @@ public class BasePanel extends javax.swing.JPanel {
 
     }//GEN-LAST:event_groupButtonActionPerformed
 
+    private void collectionButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_collectionButtonActionPerformed
+        Collection<Component> panels = null;
+        try {
+            panels = CollectionPanel.readPanels(CardboardCommunity.connection, null);
+            CardboardCommunity.form.getBasePanel().fillScrollableArea(panels);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            System.out.println("Oops");
+        }
+    }//GEN-LAST:event_collectionButtonActionPerformed
+
+    private void eventButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eventButtonActionPerformed
+      Collection<Component> panels = null;
+        try {
+            panels = EventPanel.readPanels(CardboardCommunity.connection, null);
+            CardboardCommunity.form.getBasePanel().fillScrollableArea(panels);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            System.out.println("Oops");
+        }
+    }//GEN-LAST:event_eventButtonActionPerformed
+
+    private void homeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeButtonActionPerformed
+      CardboardCommunity.form.getBasePanel().fillScrollableArea(null);
+    }//GEN-LAST:event_homeButtonActionPerformed
+
+    private void globalRatingsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_globalRatingsActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_globalRatingsActionPerformed
+
+    private void groupCollectionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_groupCollectionActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_groupCollectionActionPerformed
+
+    private void recommendedGamesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_recommendedGamesActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_recommendedGamesActionPerformed
+
+    private void gameNightRecommendationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gameNightRecommendationActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_gameNightRecommendationActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup1;
@@ -241,7 +346,10 @@ public class BasePanel extends javax.swing.JPanel {
     private javax.swing.JLabel cbcIcon;
     private java.awt.Button collectionButton;
     private java.awt.Button eventButton;
+    private java.awt.Button gameNightRecommendation;
+    private java.awt.Button globalRatings;
     private java.awt.Button groupButton;
+    private java.awt.Button groupCollection;
     private java.awt.Button homeButton;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
@@ -255,12 +363,13 @@ public class BasePanel extends javax.swing.JPanel {
     private javax.swing.JSeparator jSeparator5;
     private javax.swing.JSeparator jSeparator6;
     private javax.swing.JSeparator jSeparator7;
-    private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JLabel labelCardboardCommunity;
     private java.awt.Menu menu1;
     private java.awt.Menu menu2;
     private java.awt.MenuBar menuBar1;
     private java.awt.Panel panel1;
+    private java.awt.Button recommendedGames;
     private javax.swing.JPanel scrollPanelBox;
+    private javax.swing.JTabbedPane tab;
     // End of variables declaration//GEN-END:variables
 }

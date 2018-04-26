@@ -5,18 +5,74 @@
  */
 package cardboardcommunity;
 
+import com.sun.glass.ui.SystemClipboard;
+import java.awt.Component;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
+
 /**
  *
  * @author rnkambara
  */
 public class CollectionPanel extends javax.swing.JPanel {
-
+    int game_id;
+    int player_count;
+    String name;
+    String edition;
+    String genre;
+    int playtime;
+    int rating;
     /**
      * Creates new form CollectionPanel
      */
     public CollectionPanel() {
         initComponents();
     }
+    
+     public void refresh() throws SQLException
+     {
+         playerCountText.setText(player_count + "");
+         labelBoardgame.setText(name);
+         editionText.setText(edition);
+         genreText.setText(genre);
+         playtimeText.setText(playtime + "");
+         ratingComboBox.setSelectedIndex(rating);         
+     }
+     
+     public static Collection<Component> readPanels(Connection con, String whereClause) throws SQLException
+     {
+         Statement s1 = con.createStatement();
+         s1.execute("SELECT B.GAME_ID, PLAYERCOUNT, NAME, EDITION, GENRE, PLAYTIME, RATING " 
+                  + "FROM BOARD_GAME B, RATING R " +
+                    "WHERE B.GAME_ID = R.GAME_ID ");
+         
+         HashMap<Integer, Component> map = new HashMap<>();
+         ResultSet groupRes = s1.getResultSet();
+         
+         while (groupRes.next())
+         {
+            CollectionPanel p = new CollectionPanel();
+            p.game_id = groupRes.getInt("GAME_ID");
+            p.player_count = groupRes.getInt("PLAYERCOUNT");
+            p.name = groupRes.getString("NAME");
+            p.edition = groupRes.getString("EDITION");
+            p.genre = groupRes.getString("GENRE");
+            p.playtime = groupRes.getInt("PLAYTIME");
+            p.rating = groupRes.getInt("RATING");
+            map.put(p.game_id, p);
+        }
+         
+        for (Component p : map.values())
+        {
+           ((CollectionPanel)p).refresh();
+        }
+        return map.values();  
+     }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -27,26 +83,28 @@ public class CollectionPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(32767, 0));
         leftPanelOrange = new javax.swing.JPanel();
         labelDefaultImage = new javax.swing.JLabel();
-        labelBoardgame = new javax.swing.JLabel();
         buttonRid = new java.awt.Button();
         jLabel1 = new javax.swing.JLabel();
         defaultBoardgameIcon = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        labelBoardgame = new javax.swing.JTextArea();
         labelRating = new javax.swing.JLabel();
         labelPlayerCount = new javax.swing.JLabel();
         labelEdition = new javax.swing.JLabel();
         labelGenre = new javax.swing.JLabel();
         labelPlaytime = new javax.swing.JLabel();
         jScrollPane7 = new javax.swing.JScrollPane();
-        jTextArea2 = new javax.swing.JTextArea();
+        playerCountText = new javax.swing.JTextArea();
         jScrollPane8 = new javax.swing.JScrollPane();
-        jTextArea3 = new javax.swing.JTextArea();
+        editionText = new javax.swing.JTextArea();
         jScrollPane9 = new javax.swing.JScrollPane();
-        jTextArea4 = new javax.swing.JTextArea();
+        genreText = new javax.swing.JTextArea();
         jScrollPane10 = new javax.swing.JScrollPane();
-        jTextArea5 = new javax.swing.JTextArea();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        playtimeText = new javax.swing.JTextArea();
+        ratingComboBox = new javax.swing.JComboBox<>();
 
         setBackground(new java.awt.Color(101, 95, 123));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -55,11 +113,6 @@ public class CollectionPanel extends javax.swing.JPanel {
         leftPanelOrange.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         leftPanelOrange.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         leftPanelOrange.add(labelDefaultImage, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, -1, -1));
-
-        labelBoardgame.setFont(new java.awt.Font("Waree", 1, 14)); // NOI18N
-        labelBoardgame.setForeground(new java.awt.Color(253, 251, 251));
-        labelBoardgame.setText("Boardgame");
-        leftPanelOrange.add(labelBoardgame, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, -1, -1));
 
         buttonRid.setBackground(new java.awt.Color(233, 155, 2));
         buttonRid.setFont(new java.awt.Font("Waree", 1, 12)); // NOI18N
@@ -76,6 +129,27 @@ public class CollectionPanel extends javax.swing.JPanel {
 
         defaultBoardgameIcon.setIcon(new javax.swing.ImageIcon("/home/rnkambara/Documents/CardBoard-Community/images/default_boardgame.png")); // NOI18N
         leftPanelOrange.add(defaultBoardgameIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, -1, -1));
+
+        jScrollPane1.setBackground(new java.awt.Color(101, 95, 123));
+        jScrollPane1.setBorder(null);
+        jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        jScrollPane1.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
+        jScrollPane1.setViewportBorder(null);
+        jScrollPane1.setEnabled(false);
+        jScrollPane1.setOpaque(false);
+
+        labelBoardgame.setBackground(new java.awt.Color(233, 155, 2));
+        labelBoardgame.setColumns(20);
+        labelBoardgame.setFont(new java.awt.Font("Waree", 1, 15)); // NOI18N
+        labelBoardgame.setForeground(new java.awt.Color(254, 254, 254));
+        labelBoardgame.setLineWrap(true);
+        labelBoardgame.setRows(5);
+        labelBoardgame.setText("Board Game");
+        labelBoardgame.setWrapStyleWord(true);
+        labelBoardgame.setBorder(null);
+        jScrollPane1.setViewportView(labelBoardgame);
+
+        leftPanelOrange.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 150, 50));
 
         add(leftPanelOrange, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 160, 230));
 
@@ -107,53 +181,53 @@ public class CollectionPanel extends javax.swing.JPanel {
         jScrollPane7.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         jScrollPane7.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
 
-        jTextArea2.setBackground(new java.awt.Color(254, 254, 254));
-        jTextArea2.setFont(new java.awt.Font("Waree", 0, 15)); // NOI18N
-        jTextArea2.setForeground(new java.awt.Color(112, 110, 110));
-        jTextArea2.setText("Player count here...");
-        jScrollPane7.setViewportView(jTextArea2);
+        playerCountText.setBackground(new java.awt.Color(254, 254, 254));
+        playerCountText.setFont(new java.awt.Font("Waree", 0, 15)); // NOI18N
+        playerCountText.setForeground(new java.awt.Color(112, 110, 110));
+        playerCountText.setText("Player count here...");
+        jScrollPane7.setViewportView(playerCountText);
 
         add(jScrollPane7, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 10, 200, 30));
 
         jScrollPane8.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         jScrollPane8.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
 
-        jTextArea3.setBackground(new java.awt.Color(254, 254, 254));
-        jTextArea3.setFont(new java.awt.Font("Waree", 0, 15)); // NOI18N
-        jTextArea3.setForeground(new java.awt.Color(112, 110, 110));
-        jTextArea3.setText("Edition here...");
-        jScrollPane8.setViewportView(jTextArea3);
+        editionText.setBackground(new java.awt.Color(254, 254, 254));
+        editionText.setFont(new java.awt.Font("Waree", 0, 15)); // NOI18N
+        editionText.setForeground(new java.awt.Color(112, 110, 110));
+        editionText.setText("Edition here...");
+        jScrollPane8.setViewportView(editionText);
 
         add(jScrollPane8, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 50, 200, 30));
 
         jScrollPane9.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         jScrollPane9.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
 
-        jTextArea4.setBackground(new java.awt.Color(254, 254, 254));
-        jTextArea4.setFont(new java.awt.Font("Waree", 0, 15)); // NOI18N
-        jTextArea4.setForeground(new java.awt.Color(112, 110, 110));
-        jTextArea4.setText("Genre here...");
-        jScrollPane9.setViewportView(jTextArea4);
+        genreText.setBackground(new java.awt.Color(254, 254, 254));
+        genreText.setFont(new java.awt.Font("Waree", 0, 15)); // NOI18N
+        genreText.setForeground(new java.awt.Color(112, 110, 110));
+        genreText.setText("Genre here...");
+        jScrollPane9.setViewportView(genreText);
 
         add(jScrollPane9, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 90, 200, 30));
 
         jScrollPane10.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         jScrollPane10.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
 
-        jTextArea5.setBackground(new java.awt.Color(254, 254, 254));
-        jTextArea5.setFont(new java.awt.Font("Waree", 0, 15)); // NOI18N
-        jTextArea5.setForeground(new java.awt.Color(112, 110, 110));
-        jTextArea5.setText("Playtime here...");
-        jScrollPane10.setViewportView(jTextArea5);
+        playtimeText.setBackground(new java.awt.Color(254, 254, 254));
+        playtimeText.setFont(new java.awt.Font("Waree", 0, 15)); // NOI18N
+        playtimeText.setForeground(new java.awt.Color(112, 110, 110));
+        playtimeText.setText("Playtime here...");
+        jScrollPane10.setViewportView(playtimeText);
 
         add(jScrollPane10, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 130, 200, 30));
 
-        jComboBox1.setBackground(new java.awt.Color(254, 254, 254));
-        jComboBox1.setFont(new java.awt.Font("Waree", 0, 15)); // NOI18N
-        jComboBox1.setForeground(new java.awt.Color(112, 110, 110));
-        jComboBox1.setMaximumRowCount(6);
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "---", "1.0", "2.0", "3.0", "4.0", "5.0" }));
-        add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 180, 200, 30));
+        ratingComboBox.setBackground(new java.awt.Color(254, 254, 254));
+        ratingComboBox.setFont(new java.awt.Font("Waree", 0, 15)); // NOI18N
+        ratingComboBox.setForeground(new java.awt.Color(112, 110, 110));
+        ratingComboBox.setMaximumRowCount(6);
+        ratingComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "0", "1", "2", "3", "4", "5" }));
+        add(ratingComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 180, 200, 30));
     }// </editor-fold>//GEN-END:initComponents
 
     private void buttonRidActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonRidActionPerformed
@@ -164,17 +238,16 @@ public class CollectionPanel extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private java.awt.Button buttonRid;
     private javax.swing.JLabel defaultBoardgameIcon;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JTextArea editionText;
+    private javax.swing.Box.Filler filler1;
+    private javax.swing.JTextArea genreText;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane10;
     private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JScrollPane jScrollPane8;
     private javax.swing.JScrollPane jScrollPane9;
-    private javax.swing.JTextArea jTextArea2;
-    private javax.swing.JTextArea jTextArea3;
-    private javax.swing.JTextArea jTextArea4;
-    private javax.swing.JTextArea jTextArea5;
-    private javax.swing.JLabel labelBoardgame;
+    private javax.swing.JTextArea labelBoardgame;
     private javax.swing.JLabel labelDefaultImage;
     private javax.swing.JLabel labelEdition;
     private javax.swing.JLabel labelGenre;
@@ -182,5 +255,8 @@ public class CollectionPanel extends javax.swing.JPanel {
     private javax.swing.JLabel labelPlaytime;
     private javax.swing.JLabel labelRating;
     private javax.swing.JPanel leftPanelOrange;
+    private javax.swing.JTextArea playerCountText;
+    private javax.swing.JTextArea playtimeText;
+    private javax.swing.JComboBox<String> ratingComboBox;
     // End of variables declaration//GEN-END:variables
 }

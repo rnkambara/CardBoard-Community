@@ -4,19 +4,39 @@
  * and open the template in the editor.
  */
 package cardboardcommunity;
+import java.sql.*; 
+import static helpers.Configuration.JDBC_URL;
 
-/**
- *
- * @author rnkambara
- */
 public class CardboardCommunity {
+	static Connection connection;
+ 	static baseForm form;
+	 public static void startConnection() throws SQLException
+	 {
+		System.out.println("Connecting...");
+		connection = DriverManager.getConnection
+				(
+					JDBC_URL, 
+					"rebekah_alex", 
+					"sittingInAHeap"
+				);
+		System.out.println("Connected successfully.");
+	 }
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String[] args) {
-      new BasePanel().setVisible(true);;
-   
+
+        System.out.println("Starting Cardboard Communtity...");        
+        try
+        {
+            System.out.println("Starting Connection...");
+            startConnection();
+        }
+        catch (SQLException e)
+        {
+            System.out.println("Connection unable to start...");
+        }
+        
+        form = new baseForm();
+        form.setVisible(true);
     }
     
 }

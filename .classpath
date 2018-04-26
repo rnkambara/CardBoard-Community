@@ -4,5 +4,9 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="lib" path="DateChooser.jar"/>
 	<classpathentry kind="lib" path="/usr/share/netbeans/ide14/modules/ext/swingx-all-1.6.4.jar"/>
+<<<<<<< HEAD
+=======
+	<classpathentry kind="lib" path="/home/rnkambara/Documents/CardBoard-Community/ojdbc8.jar"/>
+>>>>>>> master
 	<classpathentry kind="output" path="bin"/>
 </classpath>

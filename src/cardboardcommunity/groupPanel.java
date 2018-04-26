@@ -4,13 +4,63 @@
  * and open the template in the editor.
  */
 package cardboardcommunity;
-
+import java.awt.Component;
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.List;
 /**
  *
  * @author rnkambara
  */
 public class groupPanel extends javax.swing.JPanel {
-
+    int id;
+    String name;
+    String location;
+    List<String> members;
+    
+   
+    public void refresh() throws SQLException{
+        labelGroupName.setText(name);
+        locationTextArea.setText(location);
+        
+        for(String member : members)
+        {
+            membersList.add(member);
+        }
+    }
+    
+    public static Collection<Component> readPanels(Connection con, String whereClause) throws SQLException{
+        Statement s1 = con.createStatement();
+        Statement s2 = con.createStatement();
+        s1.executeQuery("SELECT * FROM GAME_GROUP WHERE " + whereClause);
+        s2.executeQuery("SELECT MEMBER_EMAIL, GROUP_ID FROM MEMBER_OF, (SELECT GROUP_ID ID FROM GAME_GROUP WHERE " + whereClause + ") "
+                + "WHERE GROUP_ID = ID"
+        );
+       
+        HashMap<Integer, Component> map = new HashMap<>();
+        ResultSet groupRes = s1.getResultSet();
+        while (groupRes.next()){
+            Integer id = groupRes.getInt("GROUP_ID");
+            groupPanel p = new groupPanel();
+            p.id = id;
+            map.put(id, p);
+            p.name = groupRes.getString("NAME");
+            p.location = groupRes.getString("DEFAULT_LOCATION");
+            p.members = new ArrayList<String>();
+        }
+        ResultSet memberRes = s2.getResultSet();
+        while (memberRes.next()){
+            groupPanel p = (groupPanel)map.get(memberRes.getInt("GROUP_ID"));
+            p.members.add(memberRes.getString("MEMBER_EMAIL")); 
+        }
+        for (Component p : map.values()){
+            ((groupPanel)p).refresh();
+        }
+        return map.values();
+    }
+    
     /**
      * Creates new form groupPanel
      */
@@ -34,13 +84,13 @@ public class groupPanel extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         defaultGroupIcon = new javax.swing.JLabel();
         labelMember = new javax.swing.JLabel();
-        listMembers = new java.awt.List();
+        membersList = new java.awt.List();
         labelLocation = new javax.swing.JLabel();
         jSeparator4 = new javax.swing.JSeparator();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextPane1 = new javax.swing.JTextPane();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        locationTextArea = new javax.swing.JTextArea();
 
         setBackground(new java.awt.Color(101, 95, 123));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -78,16 +128,16 @@ public class groupPanel extends javax.swing.JPanel {
         labelMember.setText("Members");
         add(labelMember, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 50, 110, -1));
 
-        listMembers.setBackground(new java.awt.Color(254, 254, 254));
-        listMembers.setFont(new java.awt.Font("Waree", 0, 12)); // NOI18N
-        listMembers.setMultipleMode(true);
-        listMembers.setName(""); // NOI18N
-        listMembers.addActionListener(new java.awt.event.ActionListener() {
+        membersList.setBackground(new java.awt.Color(254, 254, 254));
+        membersList.setFont(new java.awt.Font("Waree", 0, 12)); // NOI18N
+        membersList.setMultipleMode(true);
+        membersList.setName(""); // NOI18N
+        membersList.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                listMembersActionPerformed(evt);
+                membersListActionPerformed(evt);
             }
         });
-        add(listMembers, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 90, 320, 120));
+        add(membersList, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 90, 320, 120));
 
         labelLocation.setFont(new java.awt.Font("Waree", 1, 14)); // NOI18N
         labelLocation.setForeground(new java.awt.Color(253, 251, 251));
@@ -107,11 +157,11 @@ public class groupPanel extends javax.swing.JPanel {
         jScrollPane3.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         jScrollPane3.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
 
-        jTextArea1.setBackground(new java.awt.Color(254, 254, 254));
-        jTextArea1.setFont(new java.awt.Font("Waree", 0, 15)); // NOI18N
-        jTextArea1.setForeground(new java.awt.Color(112, 110, 110));
-        jTextArea1.setText("Location goes here...");
-        jScrollPane3.setViewportView(jTextArea1);
+        locationTextArea.setBackground(new java.awt.Color(254, 254, 254));
+        locationTextArea.setFont(new java.awt.Font("Waree", 0, 15)); // NOI18N
+        locationTextArea.setForeground(new java.awt.Color(112, 110, 110));
+        locationTextArea.setText("Location goes here...");
+        jScrollPane3.setViewportView(locationTextArea);
 
         add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 10, 180, 30));
     }// </editor-fold>//GEN-END:initComponents
@@ -120,9 +170,9 @@ public class groupPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_buttonWithdrawActionPerformed
 
-    private void listMembersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listMembersActionPerformed
+    private void membersListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_membersListActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_listMembersActionPerformed
+    }//GEN-LAST:event_membersListActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -132,13 +182,13 @@ public class groupPanel extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JSeparator jSeparator4;
-    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextPane jTextPane1;
     private javax.swing.JLabel labelDefaultImage;
     private javax.swing.JLabel labelGroupName;
     private javax.swing.JLabel labelLocation;
     private javax.swing.JLabel labelMember;
     private javax.swing.JPanel leftPanelOrange;
-    private java.awt.List listMembers;
+    private javax.swing.JTextArea locationTextArea;
+    private java.awt.List membersList;
     // End of variables declaration//GEN-END:variables
 }

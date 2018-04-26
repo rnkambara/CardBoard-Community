@@ -1,9 +1,11 @@
 package cardboardcommunity;
-import java.awt.Component;
-import java.awt.Container;
-import java.awt.Dimension;
-import java.awt.LayoutManager;
-import java.util.*;
+import java.sql.SQLException;
+import java.util.Collection;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import java.awt.Component; 
+import javax.swing.JButton;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -22,6 +24,18 @@ public class BasePanel extends javax.swing.JPanel {
     public BasePanel() {
         initComponents();
     }
+    
+    public void fillScrollableArea(Collection<Component> panels)
+    {
+    	JButton test = new JButton("test");
+    	for(Component panel : panels)
+    	{
+          System.out.println("Should add... " + ((groupPanel)panel).name);
+          scrollPanelBox.add(panel);
+    	}
+    	CardboardCommunity.form.validate();
+    	
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -38,7 +52,7 @@ public class BasePanel extends javax.swing.JPanel {
         buttonGroup1 = new javax.swing.ButtonGroup();
         jPanel4 = new javax.swing.JPanel();
         scrollPane1 = new java.awt.ScrollPane();
-        panelScrollBox = new javax.swing.JPanel();
+        scrollPanelBox = new javax.swing.JPanel();
         jSeparator3 = new javax.swing.JSeparator();
         jPanel2 = new javax.swing.JPanel();
         collectionButton = new java.awt.Button();
@@ -66,23 +80,9 @@ public class BasePanel extends javax.swing.JPanel {
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel4.setBackground(new java.awt.Color(250, 240, 231));
-
-        panelScrollBox.setBackground(new java.awt.Color(254, 254, 254));
-        panelScrollBox.setForeground(new java.awt.Color(254, 254, 254));
-        panelScrollBox.setAlignmentX(0.0F);
-
-        javax.swing.GroupLayout panelScrollBoxLayout = new javax.swing.GroupLayout(panelScrollBox);
-        panelScrollBox.setLayout(panelScrollBoxLayout);
-        panelScrollBoxLayout.setHorizontalGroup(
-            panelScrollBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 926, Short.MAX_VALUE)
-        );
-        panelScrollBoxLayout.setVerticalGroup(
-            panelScrollBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 950, Short.MAX_VALUE)
-        );
-
-        scrollPane1.add(panelScrollBox);
+        scrollPanelBox.setBackground(new java.awt.Color(254, 254, 254));
+        scrollPanelBox.setLayout(new javax.swing.BoxLayout(scrollPanelBox, javax.swing.BoxLayout.Y_AXIS));
+        scrollPane1.add(scrollPanelBox);
 
         jSeparator3.setOrientation(javax.swing.SwingConstants.VERTICAL);
 
@@ -92,10 +92,10 @@ public class BasePanel extends javax.swing.JPanel {
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGap(28, 28, 28)
-                .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(scrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 942, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(32, 32, 32)
+                .addComponent(scrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 850, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(102, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -199,7 +199,15 @@ public class BasePanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void groupButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_groupButtonActionPerformed
-        // TODO add your handling code here:
+    	Collection<Component> panels = null;
+    	try {
+             panels = groupPanel.readPanels(CardboardCommunity.connection, "GROUP_ID > -1");
+             CardboardCommunity.form.getBasePanel().fillScrollableArea(panels);
+        } catch (Exception ex) {
+        	ex.printStackTrace();
+            System.out.println("Oops");
+        }
+        
     }//GEN-LAST:event_groupButtonActionPerformed
 
 
@@ -225,7 +233,7 @@ public class BasePanel extends javax.swing.JPanel {
     private java.awt.Menu menu2;
     private java.awt.MenuBar menuBar1;
     private java.awt.Panel panel1;
-    private javax.swing.JPanel panelScrollBox;
     private java.awt.ScrollPane scrollPane1;
+    private javax.swing.JPanel scrollPanelBox;
     // End of variables declaration//GEN-END:variables
 }

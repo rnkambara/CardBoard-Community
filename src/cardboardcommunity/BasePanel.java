@@ -7,9 +7,11 @@ import java.util.LinkedList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.awt.Component; 
+import java.sql.*;
 import javax.swing.JButton;
 import javax.swing.JToolBar;
 
+//rnkambara@mix.wvu.edu, adentrekin@mix.wvu.edu, arMccalley@mix.wvu.edu
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -32,6 +34,7 @@ public class BasePanel extends javax.swing.JPanel {
     public void fillScrollableArea(Collection<Component> panels)
     {
         scrollPanelBox.removeAll();
+
         if(panels != null)
         {
           for(Component panel : panels)
@@ -41,6 +44,25 @@ public class BasePanel extends javax.swing.JPanel {
           }
         }
     	CardboardCommunity.form.validate();
+    }
+    
+    public void fillUserCheckBox()
+    {
+        try {
+            Statement statement = CardboardCommunity.connection.createStatement();
+            statement.executeQuery("SELECT EMAIL FROM MEMBER");
+            
+            ResultSet userResults = statement.getResultSet();
+            
+            while(userResults.next())
+            {
+                userComboBox.addItem(userResults.getString("EMAIL"));
+            }
+                    
+        } catch (SQLException ex) {
+            Logger.getLogger(BasePanel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
     }
 
     /**
@@ -107,11 +129,11 @@ public class BasePanel extends javax.swing.JPanel {
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(39, 39, 39)
+                .addGap(31, 31, 31)
                 .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 874, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(83, Short.MAX_VALUE))
+                .addContainerGap(71, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -123,7 +145,7 @@ public class BasePanel extends javax.swing.JPanel {
                 .addContainerGap(100, Short.MAX_VALUE))
         );
 
-        add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 230, 1020, 620));
+        add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 230, 1000, 620));
 
         jPanel2.setBackground(new java.awt.Color(250, 240, 231));
 
@@ -243,7 +265,6 @@ public class BasePanel extends javax.swing.JPanel {
 
         userComboBox.setBackground(new java.awt.Color(254, 254, 254));
         userComboBox.setFont(new java.awt.Font("Waree", 0, 15)); // NOI18N
-        userComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "rnkambara@mix.wvu.edu", "adentrekin@mix.wvu.edu", "arMccalley@mix.wvu.edu" }));
 
         jLabel1.setFont(new java.awt.Font("Waree", 1, 15)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(101, 95, 123));
@@ -276,7 +297,7 @@ public class BasePanel extends javax.swing.JPanel {
 
         tab.getAccessibleContext().setAccessibleName("mainTab");
 
-        add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 230, 250, 620));
+        add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 230, 270, 620));
 
         panel1.setBackground(new java.awt.Color(250, 240, 231));
         panel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());

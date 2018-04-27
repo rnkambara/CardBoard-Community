@@ -5,7 +5,6 @@
  */
 package cardboardcommunity;
 
-import com.sun.glass.ui.SystemClipboard;
 import java.awt.Component;
 import java.sql.Connection;
 import java.sql.ResultSet;

@@ -1,6 +1,9 @@
 package cardboardcommunity;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.Collection;
+import java.util.LinkedList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.awt.Component; 
@@ -342,7 +345,31 @@ public class BasePanel extends javax.swing.JPanel {
     }//GEN-LAST:event_homeButtonActionPerformed
 
     private void globalRatingsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_globalRatingsActionPerformed
-        // TODO add your handling code here:
+        Collection<CollectionPanel> c;
+        try {
+        	Statement s =CardboardCommunity.connection.createStatement();
+        	s.executeQuery("SELECT * FROM  BOARD_GAME, GLOBAL_RATINGS\n" + 
+        			"WHERE BOARD_GAME.GAME_ID = GLOBAL_RATINGS.GAME_ID");
+        	ResultSet rs = s.getResultSet();
+        	LinkedList<Component> list = new LinkedList<>();
+        	while (rs.next()) {
+        		CollectionPanel p = new CollectionPanel();
+        		p.game_id = rs.getInt("GAME_ID");
+                p.player_count = rs.getInt("PLAYERCOUNT");
+                p.name = rs.getString("NAME");
+                p.edition = rs.getString("EDITION");
+                p.genre = rs.getString("GENRE");
+                p.playtime = rs.getInt("PLAYTIME");
+                p.rating = (int) rs.getDouble("G_RATING");
+                System.out.println(p.rating);
+                p.refresh(true);
+                list.add(p);
+                
+        	}
+        	CardboardCommunity.form.getBasePanel().fillScrollableArea(list);
+        }catch(Exception e) {
+        	System.out.println("Monkey says oops");
+        }
     }//GEN-LAST:event_globalRatingsActionPerformed
 
     private void groupCollectionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_groupCollectionActionPerformed

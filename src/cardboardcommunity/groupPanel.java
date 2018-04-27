@@ -91,8 +91,6 @@ public class groupPanel extends javax.swing.JPanel{
         membersList = new java.awt.List();
         labelLocation = new javax.swing.JLabel();
         jSeparator4 = new javax.swing.JSeparator();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTextPane1 = new javax.swing.JTextPane();
         jScrollPane4 = new javax.swing.JScrollPane();
         labelGroupName1 = new javax.swing.JTextArea();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -117,7 +115,7 @@ public class groupPanel extends javax.swing.JPanel{
                 buttonWithdrawActionPerformed(evt);
             }
         });
-        leftPanelOrange.add(buttonWithdraw, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 200, -1, 30));
+        leftPanelOrange.add(buttonWithdraw, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 210, -1, 30));
         leftPanelOrange.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, -1, -1));
 
         defaultGroupIcon.setIcon(new javax.swing.ImageIcon("/home/rnkambara/Documents/CardBoard-Community/images/default_group.jpeg")); // NOI18N
@@ -142,9 +140,9 @@ public class groupPanel extends javax.swing.JPanel{
         labelGroupName.setBorder(null);
         jScrollPane5.setViewportView(labelGroupName);
 
-        leftPanelOrange.add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 150, 60));
+        leftPanelOrange.add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 150, 60));
 
-        add(leftPanelOrange, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 160, 230));
+        add(leftPanelOrange, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 160, 240));
 
         labelMember.setFont(new java.awt.Font("Waree", 1, 14)); // NOI18N
         labelMember.setForeground(new java.awt.Color(253, 251, 251));
@@ -167,15 +165,6 @@ public class groupPanel extends javax.swing.JPanel{
         labelLocation.setText("Location: ");
         add(labelLocation, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 20, 140, -1));
         add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 70, 110, 10));
-
-        jTextPane1.setBackground(new java.awt.Color(101, 95, 123));
-        jTextPane1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(101, 95, 123)));
-        jTextPane1.setFont(new java.awt.Font("Waree", 0, 15)); // NOI18N
-        jTextPane1.setForeground(new java.awt.Color(254, 254, 254));
-        jTextPane1.setText(" Rating Here...");
-        jScrollPane1.setViewportView(jTextPane1);
-
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 170, 200, 30));
 
         jScrollPane4.setBackground(new java.awt.Color(101, 95, 123));
         jScrollPane4.setBorder(null);
@@ -217,7 +206,7 @@ public class groupPanel extends javax.swing.JPanel{
         locationTextArea.setBorder(null);
         jScrollPane2.setViewportView(locationTextArea);
 
-        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 20, 290, 20));
+        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 10, 290, 30));
         add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 40, 190, 10));
     }// </editor-fold>//GEN-END:initComponents
 
@@ -234,13 +223,11 @@ public class groupPanel extends javax.swing.JPanel{
     private java.awt.Button buttonWithdraw;
     private javax.swing.JLabel defaultGroupIcon;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator4;
-    private javax.swing.JTextPane jTextPane1;
     private javax.swing.JLabel labelDefaultImage;
     private javax.swing.JTextArea labelGroupName;
     private javax.swing.JTextArea labelGroupName1;

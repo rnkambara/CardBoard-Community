@@ -373,11 +373,69 @@ public class BasePanel extends javax.swing.JPanel {
     }//GEN-LAST:event_globalRatingsActionPerformed
 
     private void groupCollectionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_groupCollectionActionPerformed
-        // TODO add your handling code here:
+    	try {
+    		String user = CardboardCommunity.form.getBasePanel().userComboBox.getSelectedItem().toString();
+    		Statement s =CardboardCommunity.connection.createStatement();
+    		s.executeQuery("SELECT *\n" + 
+    				"from BOARD_GAME BG\n" + 
+    				"WHERE EXISTS "
+    				+ "(SELECT * FROM GROUP_COLLECTION GC, MEMBER_OF MO WHERE GC.GAME_ID = BG.GAME_ID"
+    				+ "	AND MO.GROUP_ID = GC.GROUP_ID"
+    				+ " AND MO.MEMBER_EMAIL = '" + user + "' )");
+    		ResultSet rs = s.getResultSet();
+        	LinkedList<Component> list = new LinkedList<>();
+        	while (rs.next()) {
+        		CollectionPanel p = new CollectionPanel();
+        		p.game_id = rs.getInt("GAME_ID");
+                p.player_count = rs.getInt("PLAYERCOUNT");
+                p.name = rs.getString("NAME");
+                p.edition = rs.getString("EDITION");
+                p.genre = rs.getString("GENRE");
+                p.playtime = rs.getInt("PLAYTIME");
+                p.refresh(false);
+                list.add(p);
+                
+        	}
+        	CardboardCommunity.form.getBasePanel().fillScrollableArea(list);
+    	}
+    	catch(Exception E) {
+    		System.out.println(E.getMessage());
+    	}
     }//GEN-LAST:event_groupCollectionActionPerformed
 
     private void recommendedGamesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_recommendedGamesActionPerformed
-        // TODO add your handling code here:
+    	try {
+    		String user = CardboardCommunity.form.getBasePanel().userComboBox.getSelectedItem().toString();
+    		Statement s =CardboardCommunity.connection.createStatement();
+    		s.executeQuery("SELECT *\n" + 
+    				"FROM GLOBAL_RATINGS NATURAL JOIN \n" + 
+    				" (SELECT * \n" + 
+    				"  FROM BOARD_GAME B\n" + 
+    				"  WHERE NOT EXISTS (SELECT * \n" + 
+    				"                 FROM MEMBER_OF M, GROUP_COLLECTION C \n" + 
+    				"                 WHERE M.MEMBER_EMAIL = '"+ user + "' AND\n" + 
+    				"                 M.GROUP_ID = C.GROUP_ID AND \n" + 
+    				"                 C.GAME_ID = B.GAME_ID)) \n" + 
+    				"ORDER BY G_RATING DESC");
+    		ResultSet rs = s.getResultSet();
+        	LinkedList<Component> list = new LinkedList<>();
+        	while (rs.next()) {
+        		CollectionPanel p = new CollectionPanel();
+        		p.game_id = rs.getInt("GAME_ID");
+                p.player_count = rs.getInt("PLAYERCOUNT");
+                p.name = rs.getString("NAME");
+                p.edition = rs.getString("EDITION");
+                p.genre = rs.getString("GENRE");
+                p.playtime = rs.getInt("PLAYTIME");
+                p.refresh(false);
+                list.add(p);
+                
+        	}
+        	CardboardCommunity.form.getBasePanel().fillScrollableArea(list);
+    	}
+    	catch(Exception E) {
+    		System.out.println(E.getMessage());
+    	}
     }//GEN-LAST:event_recommendedGamesActionPerformed
 
     private void gameNightRecommendationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gameNightRecommendationActionPerformed

@@ -5,7 +5,6 @@
  */
 package cardboardcommunity;
 
-import com.sun.glass.ui.SystemClipboard;
 import java.awt.Component;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -130,7 +129,7 @@ public class CollectionPanel extends javax.swing.JPanel {
         leftPanelOrange.add(buttonRid, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 200, 80, 30));
         leftPanelOrange.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, -1, -1));
 
-        defaultBoardgameIcon.setIcon(new javax.swing.ImageIcon("/home/rnkambara/Documents/CardBoard-Community/images/default_boardgame.png")); // NOI18N
+        defaultBoardgameIcon.setIcon(new javax.swing.ImageIcon("images/default_boardgame.png")); // NOI18N
         leftPanelOrange.add(defaultBoardgameIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, -1, -1));
 
         jScrollPane1.setBackground(new java.awt.Color(101, 95, 123));

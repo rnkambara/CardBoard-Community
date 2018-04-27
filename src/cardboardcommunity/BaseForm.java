@@ -7,6 +7,7 @@ package cardboardcommunity;
 
 import java.sql.*;
 import static helpers.Configuration.JDBC_URL;
+import java.sql.SQLException;
 
 /** @author rnkambara */
 public class BaseForm extends javax.swing.JFrame {

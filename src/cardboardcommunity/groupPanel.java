@@ -34,10 +34,13 @@ public class groupPanel extends javax.swing.JPanel{
     public static Collection<Component> readPanels(Connection con, String whereClause) throws SQLException{
         Statement s1 = con.createStatement();
         Statement s2 = con.createStatement();
-        s1.executeQuery("SELECT * FROM GAME_GROUP WHERE " + whereClause);
-        s2.executeQuery("SELECT MEMBER_EMAIL, GROUP_ID FROM MEMBER_OF, (SELECT GROUP_ID ID FROM GAME_GROUP WHERE " + whereClause + ") "
-                + "WHERE GROUP_ID = ID"
-        );
+        s1.executeQuery("SELECT G.GROUP_ID, NAME, DEFAULT_LOCATION  " +
+                        "FROM GAME_GROUP G, MEMBER_OF M " +
+                        "WHERE " + whereClause + " AND G.GROUP_ID = M.GROUP_ID");
+        
+        s2.executeQuery("SELECT MEMBER_EMAIL, GROUP_ID " +
+                        "FROM MEMBER_OF NATURAL JOIN (SELECT GROUP_ID " +
+                                                     "FROM MEMBER_OF WHERE " + whereClause +" )");
        
         HashMap<Integer, Component> map = new HashMap<>();
         ResultSet groupRes = s1.getResultSet();

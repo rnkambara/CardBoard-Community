@@ -34,22 +34,26 @@ public class CollectionPanel extends javax.swing.JPanel {
         initComponents();
     }
     
-     public void refresh() throws SQLException
+     public void refresh(boolean showRating) throws SQLException
      {
          playerCountText.setText(player_count + "");
          labelBoardgame.setText(name);
          editionText.setText(edition);
          genreText.setText(genre);
          playtimeText.setText(playtime + "");
-         ratingComboBox.setSelectedIndex(rating);         
+         if(!showRating)
+         {
+            ratingComboBox.setVisible(false);
+            labelRating.setVisible(false);
+         }
      }
      
      public static Collection<Component> readPanels(Connection con, String whereClause) throws SQLException
      {
          Statement s1 = con.createStatement();
-         s1.execute("SELECT B.GAME_ID, PLAYERCOUNT, NAME, EDITION, GENRE, PLAYTIME, RATING " 
-                  + "FROM BOARD_GAME B, RATING R " +
-                    "WHERE B.GAME_ID = R.GAME_ID ");
+         s1.execute("SELECT B.GAME_ID, PLAYERCOUNT, NAME, EDITION, GENRE, PLAYTIME " 
+                  + "FROM BOARD_GAME B, OWNERSHIP O " +
+                    "WHERE " + whereClause + " AND B.GAME_ID = O.GAME_ID ");
          
          HashMap<Integer, Component> map = new HashMap<>();
          ResultSet groupRes = s1.getResultSet();
@@ -63,13 +67,12 @@ public class CollectionPanel extends javax.swing.JPanel {
             p.edition = groupRes.getString("EDITION");
             p.genre = groupRes.getString("GENRE");
             p.playtime = groupRes.getInt("PLAYTIME");
-            p.rating = groupRes.getInt("RATING");
             map.put(p.game_id, p);
         }
          
         for (Component p : map.values())
         {
-           ((CollectionPanel)p).refresh();
+           ((CollectionPanel)p).refresh(false);
         }
         return map.values();  
      }

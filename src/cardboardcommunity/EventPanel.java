@@ -50,9 +50,18 @@ public class EventPanel extends javax.swing.JPanel {
     {
      Statement s1 = con.createStatement();
         Statement s2 = con.createStatement();
-        s1.executeQuery("SELECT * FROM EVENT");
-        s2.executeQuery("SELECT E.EVENT_ID, ATTENDING_EMAIL FROM ATTENDING A, EVENT E WHERE E.EVENT_ID = A.EVENT_ID");  
+        s1.executeQuery("SELECT E.EVENT_ID, TITLE, LOCATION, START_TIME, END_TIME FROM EVENT E, ATTENDING A WHERE " + whereClause + " AND E.EVENT_ID = A.EVENT_ID");
+        s2.executeQuery("SELECT EVENT_ID, ATTENDING_EMAIL " +
+                        "FROM ATTENDING NATURAL JOIN (SELECT EVENT_ID " +
+                                                     "FROM ATTENDING WHERE + " + whereClause + " )");  
        
+        /**
+         "SELECT MEMBER_EMAIL, GROUP_ID " +
+                        "FROM MEMBER_OF NATURAL JOIN (SELECT GROUP_ID " +
+                                                     "FROM MEMBER_OF " +
+                                                     "WHERE " + whereClause +" )"
+         **/
+        
         HashMap<Integer, Component> map = new HashMap<>();
         ResultSet groupRes = s1.getResultSet();
         

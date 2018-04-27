@@ -302,8 +302,9 @@ public class BasePanel extends javax.swing.JPanel {
 
     private void groupButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_groupButtonActionPerformed
         Collection<Component> panels = null;
+        String user = CardboardCommunity.form.getBasePanel().userComboBox.getSelectedItem().toString();
         try {
-            panels = groupPanel.readPanels(CardboardCommunity.connection, "GROUP_ID > -1");
+            panels = groupPanel.readPanels(CardboardCommunity.connection, "MEMBER_EMAIL = '" + user + "'");
             CardboardCommunity.form.getBasePanel().fillScrollableArea(panels);
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -314,8 +315,9 @@ public class BasePanel extends javax.swing.JPanel {
 
     private void collectionButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_collectionButtonActionPerformed
         Collection<Component> panels = null;
+        String user = CardboardCommunity.form.getBasePanel().userComboBox.getSelectedItem().toString();
         try {
-            panels = CollectionPanel.readPanels(CardboardCommunity.connection, null);
+            panels = CollectionPanel.readPanels(CardboardCommunity.connection, "USER_EMAIL = '" + user + "'");
             CardboardCommunity.form.getBasePanel().fillScrollableArea(panels);
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -325,8 +327,9 @@ public class BasePanel extends javax.swing.JPanel {
 
     private void eventButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eventButtonActionPerformed
       Collection<Component> panels = null;
+      String user = CardboardCommunity.form.getBasePanel().userComboBox.getSelectedItem().toString();
         try {
-            panels = EventPanel.readPanels(CardboardCommunity.connection, null);
+            panels = EventPanel.readPanels(CardboardCommunity.connection, "ATTENDING_EMAIL = '" + user + "'");
             CardboardCommunity.form.getBasePanel().fillScrollableArea(panels);
         } catch (Exception ex) {
             ex.printStackTrace();

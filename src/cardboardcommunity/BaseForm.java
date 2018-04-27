@@ -17,7 +17,7 @@ public class BaseForm extends javax.swing.JFrame {
      */
     public BaseForm() {
         initComponents();
-        basePanel1.fillUserCheckBox();
+        basePanel2.fillUserCheckBox();
     }
 
 
@@ -31,31 +31,22 @@ public class BaseForm extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        basePanel1 = new cardboardcommunity.BasePanel();
+        scrollPane1 = new java.awt.ScrollPane();
+        basePanel2 = new cardboardcommunity.BasePanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(basePanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1477, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(basePanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 913, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 12, Short.MAX_VALUE))
-        );
+        scrollPane1.add(basePanel2);
+
+        getContentPane().add(scrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 1800, 950));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     public BasePanel getBasePanel()
     {
-    	return basePanel1;
+    	return basePanel2;
     }
 
     /**
@@ -96,6 +87,7 @@ public class BaseForm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private cardboardcommunity.BasePanel basePanel1;
+    private cardboardcommunity.BasePanel basePanel2;
+    private java.awt.ScrollPane scrollPane1;
     // End of variables declaration//GEN-END:variables
 }

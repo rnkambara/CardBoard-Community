@@ -296,6 +296,7 @@ public class EventPanel extends javax.swing.JPanel {
 
     private void buttonWithdrawActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonWithdrawActionPerformed
         // TODO add your handling code here:
+        this.setVisible(false);
     }//GEN-LAST:event_buttonWithdrawActionPerformed
 
     private void listAttendingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listAttendingActionPerformed

@@ -212,6 +212,7 @@ public class groupPanel extends javax.swing.JPanel{
 
     private void buttonWithdrawActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonWithdrawActionPerformed
         // TODO add your handling code here:
+        this.setVisible(false);
     }//GEN-LAST:event_buttonWithdrawActionPerformed
 
     private void membersListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_membersListActionPerformed

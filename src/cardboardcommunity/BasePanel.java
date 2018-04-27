@@ -33,7 +33,10 @@ public class BasePanel extends javax.swing.JPanel {
     
     public void fillScrollableArea(Collection<Component> panels)
     {
-        scrollPanelBox.removeAll();
+        for(Component component : scrollPanelBox.getComponents())
+        {
+            component.setVisible(false);
+        }
 
         if(panels != null)
         {
@@ -106,6 +109,7 @@ public class BasePanel extends javax.swing.JPanel {
         jSeparator5 = new javax.swing.JSeparator();
         jSeparator6 = new javax.swing.JSeparator();
         jSeparator7 = new javax.swing.JSeparator();
+        jLabel3 = new javax.swing.JLabel();
 
         menu1.setLabel("File");
         menuBar1.add(menu1);
@@ -129,23 +133,23 @@ public class BasePanel extends javax.swing.JPanel {
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(31, 31, 31)
+                .addGap(50, 50, 50)
                 .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(103, 103, 103)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 874, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(71, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(40, 40, 40)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 508, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(100, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 230, 1000, 620));
+        add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 260, 1380, 640));
 
         jPanel2.setBackground(new java.awt.Color(250, 240, 231));
 
@@ -274,21 +278,20 @@ public class BasePanel extends javax.swing.JPanel {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(75, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(tab, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(userComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(jLabel1))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(userComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1)
+                    .addComponent(tab, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(32, 32, 32))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(tab, javax.swing.GroupLayout.DEFAULT_SIZE, 490, Short.MAX_VALUE)
-                .addGap(27, 27, 27)
+                .addContainerGap(40, Short.MAX_VALUE)
+                .addComponent(tab, javax.swing.GroupLayout.PREFERRED_SIZE, 491, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(userComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -297,7 +300,7 @@ public class BasePanel extends javax.swing.JPanel {
 
         tab.getAccessibleContext().setAccessibleName("mainTab");
 
-        add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 230, 270, 620));
+        add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 260, 330, 640));
 
         panel1.setBackground(new java.awt.Color(250, 240, 231));
         panel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -305,7 +308,7 @@ public class BasePanel extends javax.swing.JPanel {
         labelCardboardCommunity.setFont(new java.awt.Font("Ubuntu Condensed", 0, 48)); // NOI18N
         labelCardboardCommunity.setForeground(new java.awt.Color(101, 95, 123));
         labelCardboardCommunity.setText("Cardboard Community");
-        panel1.add(labelCardboardCommunity, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 90, -1, -1));
+        panel1.add(labelCardboardCommunity, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 90, -1, -1));
 
         jSeparator1.setBackground(new java.awt.Color(101, 95, 123));
         panel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 223, 538, 12));
@@ -313,15 +316,16 @@ public class BasePanel extends javax.swing.JPanel {
 
         jSeparator2.setBackground(new java.awt.Color(101, 95, 123));
         panel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(697, 241, 538, -1));
-        panel1.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 170, 450, 10));
+        panel1.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 170, 450, 10));
+        panel1.add(cbcIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
+        panel1.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 160, 450, 10));
+        panel1.add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 160, 450, 20));
+        panel1.add(jSeparator7, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 180, 450, 20));
 
-        cbcIcon.setIcon(new javax.swing.ImageIcon("/home/rnkambara/Documents/CardBoard-Community/images/cardboard_community.png")); // NOI18N
-        panel1.add(cbcIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, -1, -1));
-        panel1.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 160, 450, 10));
-        panel1.add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 160, 450, 20));
-        panel1.add(jSeparator7, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 180, 450, 20));
+        jLabel3.setIcon(new javax.swing.ImageIcon("/home/rnkambara/Documents/CardBoard-Community/images/cardboard_community.png")); // NOI18N
+        panel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, -1, -1));
 
-        add(panel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 14, 1270, 200));
+        add(panel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 20, 1710, 220));
     }// </editor-fold>//GEN-END:initComponents
 
     private void groupButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_groupButtonActionPerformed
@@ -382,7 +386,6 @@ public class BasePanel extends javax.swing.JPanel {
                 p.genre = rs.getString("GENRE");
                 p.playtime = rs.getInt("PLAYTIME");
                 p.rating = (int) rs.getDouble("G_RATING");
-                System.out.println(p.rating);
                 p.refresh(true);
                 list.add(p);
                 
@@ -476,6 +479,7 @@ public class BasePanel extends javax.swing.JPanel {
     private java.awt.Button groupCollection;
     private java.awt.Button homeButton;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;

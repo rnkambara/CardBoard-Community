@@ -45,6 +45,12 @@ public class CollectionPanel extends javax.swing.JPanel {
             ratingComboBox.setVisible(false);
             labelRating.setVisible(false);
          }
+         else 
+         {
+            ratingComboBox.setSelectedIndex(rating);
+            ratingComboBox.setVisible(true);
+            labelRating.setVisible(true);
+         }
      }
      
      public static Collection<Component> readPanels(Connection con, String whereClause) throws SQLException
@@ -234,6 +240,7 @@ public class CollectionPanel extends javax.swing.JPanel {
 
     private void buttonRidActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonRidActionPerformed
         // TODO add your handling code here:
+        this.setVisible(false);
     }//GEN-LAST:event_buttonRidActionPerformed
 
 

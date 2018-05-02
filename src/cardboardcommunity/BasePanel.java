@@ -319,7 +319,7 @@ public class BasePanel extends javax.swing.JPanel {
         panel1.add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 160, 450, 20));
         panel1.add(jSeparator7, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 180, 450, 20));
 
-        jLabel3.setIcon(new javax.swing.ImageIcon("/home/rnkambara/Documents/CardBoard-Community/images/cardboard_community.png")); // NOI18N
+        jLabel3.setIcon(new javax.swing.ImageIcon("images/cardboard_community.png")); // NOI18N
         panel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, -1, -1));
 
         add(panel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 20, 1710, 220));

@@ -185,7 +185,7 @@ public class EventPanel extends javax.swing.JPanel {
         leftPanelOrange.add(buttonWithdraw, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 220, -1, 30));
         buttonWithdraw.getAccessibleContext().setAccessibleName("button_withdraw");
 
-        defaultEventIcon.setIcon(new javax.swing.ImageIcon("/home/rnkambara/Documents/CardBoard-Community/images/default_event.png")); // NOI18N
+        defaultEventIcon.setIcon(new javax.swing.ImageIcon("images/default_event.png")); // NOI18N
         leftPanelOrange.add(defaultEventIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, -1, -1));
 
         jScrollPane5.setBackground(new java.awt.Color(101, 95, 123));

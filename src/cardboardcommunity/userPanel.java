@@ -55,7 +55,7 @@ public class userPanel extends javax.swing.JPanel {
         jPanel3.setBackground(new java.awt.Color(40, 166, 211));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setIcon(new javax.swing.ImageIcon("/home/rnkambara/Documents/CardBoard-Community/images/default_profile.jpg")); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon("images/default_profile.jpg")); // NOI18N
         jPanel3.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, -1, -1));
 
         jScrollPane3.setBackground(new java.awt.Color(101, 95, 123));

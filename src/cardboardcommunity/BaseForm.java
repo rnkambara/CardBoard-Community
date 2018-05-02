@@ -17,7 +17,7 @@ public class BaseForm extends javax.swing.JFrame {
      */
     public BaseForm() {
         initComponents();
-        basePanel2.fillUserCheckBox();
+        basePanel1.fillUserCheckBox();
     }
 
 
@@ -31,22 +31,23 @@ public class BaseForm extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        scrollPane1 = new java.awt.ScrollPane();
-        basePanel2 = new cardboardcommunity.BasePanel();
+        basePanel1 = new cardboardcommunity.BasePanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        scrollPane1.add(basePanel2);
-
-        getContentPane().add(scrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 1800, 950));
+        getContentPane().add(basePanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1810, 1000));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     public BasePanel getBasePanel()
     {
-    	return basePanel2;
+    	return basePanel1;
+    }
+    
+    public String getCurrentUser()
+    {
+        return basePanel1.getUserComboBox().getSelectedItem().toString();
     }
 
     /**
@@ -87,7 +88,6 @@ public class BaseForm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private cardboardcommunity.BasePanel basePanel2;
-    private java.awt.ScrollPane scrollPane1;
+    private cardboardcommunity.BasePanel basePanel1;
     // End of variables declaration//GEN-END:variables
 }

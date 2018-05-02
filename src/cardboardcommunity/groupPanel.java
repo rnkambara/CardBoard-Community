@@ -24,7 +24,7 @@ public class groupPanel extends javax.swing.JPanel{
     public void refresh() throws SQLException{
         labelGroupName.setText(name);
         locationTextArea.setText(location);
-        
+        createButton.setVisible(false);
         for(String member : members)
         {
             membersList.add(member);
@@ -96,6 +96,7 @@ public class groupPanel extends javax.swing.JPanel{
         jScrollPane2 = new javax.swing.JScrollPane();
         locationTextArea = new javax.swing.JTextArea();
         jSeparator1 = new javax.swing.JSeparator();
+        createButton = new java.awt.Button();
 
         setBackground(new java.awt.Color(101, 95, 123));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -118,7 +119,7 @@ public class groupPanel extends javax.swing.JPanel{
         leftPanelOrange.add(buttonWithdraw, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 210, -1, 30));
         leftPanelOrange.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, -1, -1));
 
-        defaultGroupIcon.setIcon(new javax.swing.ImageIcon("images/default_group.jpeg")); // NOI18N
+        defaultGroupIcon.setIcon(new javax.swing.ImageIcon("/home/rnkambara/Documents/CardBoard-Community/images/default_group.jpeg")); // NOI18N
         leftPanelOrange.add(defaultGroupIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, -1, -1));
 
         jScrollPane5.setBackground(new java.awt.Color(101, 95, 123));
@@ -208,6 +209,13 @@ public class groupPanel extends javax.swing.JPanel{
 
         add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 10, 290, 30));
         add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 40, 190, 10));
+
+        createButton.setBackground(new java.awt.Color(101, 95, 123));
+        createButton.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        createButton.setFont(new java.awt.Font("Waree", 1, 12)); // NOI18N
+        createButton.setForeground(new java.awt.Color(254, 254, 254));
+        createButton.setLabel("Create");
+        add(createButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 210, 70, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void buttonWithdrawActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonWithdrawActionPerformed
@@ -222,6 +230,7 @@ public class groupPanel extends javax.swing.JPanel{
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private java.awt.Button buttonWithdraw;
+    private java.awt.Button createButton;
     private javax.swing.JLabel defaultGroupIcon;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane2;

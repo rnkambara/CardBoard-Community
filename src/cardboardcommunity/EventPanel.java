@@ -39,7 +39,7 @@ public class EventPanel extends javax.swing.JPanel {
         locationText.setText(location);
         startText.setText(startTime);
         endText.setText(endTime);
-        
+        createButton.setVisible(false);
         for(String attender : attending)
         {
             listAttending.add(attender);
@@ -139,6 +139,7 @@ public class EventPanel extends javax.swing.JPanel {
         labelTime1 = new javax.swing.JLabel();
         jScrollPane4 = new javax.swing.JScrollPane();
         endText = new javax.swing.JTextArea();
+        createButton = new java.awt.Button();
 
         menu1.setLabel("File");
         menuBar1.add(menu1);
@@ -181,10 +182,10 @@ public class EventPanel extends javax.swing.JPanel {
                 buttonWithdrawActionPerformed(evt);
             }
         });
-        leftPanelOrange.add(buttonWithdraw, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 210, -1, 30));
+        leftPanelOrange.add(buttonWithdraw, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 220, -1, 30));
         buttonWithdraw.getAccessibleContext().setAccessibleName("button_withdraw");
 
-        defaultEventIcon.setIcon(new javax.swing.ImageIcon("images/default_event.png")); // NOI18N
+        defaultEventIcon.setIcon(new javax.swing.ImageIcon("/home/rnkambara/Documents/CardBoard-Community/images/default_event.png")); // NOI18N
         leftPanelOrange.add(defaultEventIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, -1, -1));
 
         jScrollPane5.setBackground(new java.awt.Color(101, 95, 123));
@@ -208,7 +209,7 @@ public class EventPanel extends javax.swing.JPanel {
 
         leftPanelOrange.add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 150, 50));
 
-        add(leftPanelOrange, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 160, 240));
+        add(leftPanelOrange, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 160, 250));
 
         labelDescription.setFont(new java.awt.Font("Waree", 1, 14)); // NOI18N
         labelDescription.setForeground(new java.awt.Color(253, 251, 251));
@@ -292,6 +293,13 @@ public class EventPanel extends javax.swing.JPanel {
         jScrollPane4.setViewportView(endText);
 
         add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 90, 180, 30));
+
+        createButton.setBackground(new java.awt.Color(101, 95, 123));
+        createButton.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        createButton.setFont(new java.awt.Font("Waree", 1, 12)); // NOI18N
+        createButton.setForeground(new java.awt.Color(254, 254, 254));
+        createButton.setLabel("Create");
+        add(createButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 220, 70, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void buttonWithdrawActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonWithdrawActionPerformed
@@ -311,6 +319,7 @@ public class EventPanel extends javax.swing.JPanel {
     private org.jdesktop.swingx.plaf.basic.BasicDatePickerUI basicDatePickerUI4;
     private org.jdesktop.swingx.plaf.basic.BasicDatePickerUI basicDatePickerUI5;
     private java.awt.Button buttonWithdraw;
+    private java.awt.Button createButton;
     private javax.swing.JLabel defaultEventIcon;
     private javax.swing.JTextArea endText;
     private javax.swing.JScrollPane jScrollPane1;

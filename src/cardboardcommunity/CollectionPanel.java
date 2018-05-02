@@ -40,6 +40,7 @@ public class CollectionPanel extends javax.swing.JPanel {
          editionText.setText(edition);
          genreText.setText(genre);
          playtimeText.setText(playtime + "");
+         addButton.setVisible(false);
          if(!showRating)
          {
             ratingComboBox.setVisible(false);
@@ -113,6 +114,8 @@ public class CollectionPanel extends javax.swing.JPanel {
         jScrollPane10 = new javax.swing.JScrollPane();
         playtimeText = new javax.swing.JTextArea();
         ratingComboBox = new javax.swing.JComboBox<>();
+        jSeparator1 = new javax.swing.JSeparator();
+        addButton = new java.awt.Button();
 
         setBackground(new java.awt.Color(101, 95, 123));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -135,7 +138,7 @@ public class CollectionPanel extends javax.swing.JPanel {
         leftPanelOrange.add(buttonRid, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 200, 80, 30));
         leftPanelOrange.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, -1, -1));
 
-        defaultBoardgameIcon.setIcon(new javax.swing.ImageIcon("images/default_boardgame.png")); // NOI18N
+        defaultBoardgameIcon.setIcon(new javax.swing.ImageIcon("/home/rnkambara/Documents/CardBoard-Community/images/default_boardgame.png")); // NOI18N
         leftPanelOrange.add(defaultBoardgameIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, -1, -1));
 
         jScrollPane1.setBackground(new java.awt.Color(101, 95, 123));
@@ -164,7 +167,7 @@ public class CollectionPanel extends javax.swing.JPanel {
         labelRating.setFont(new java.awt.Font("Waree", 1, 14)); // NOI18N
         labelRating.setForeground(new java.awt.Color(253, 251, 251));
         labelRating.setText("Rating: ");
-        add(labelRating, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 180, 110, -1));
+        add(labelRating, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 180, 110, 20));
 
         labelPlayerCount.setFont(new java.awt.Font("Waree", 1, 14)); // NOI18N
         labelPlayerCount.setForeground(new java.awt.Color(253, 251, 251));
@@ -236,6 +239,19 @@ public class CollectionPanel extends javax.swing.JPanel {
         ratingComboBox.setMaximumRowCount(6);
         ratingComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "0", "1", "2", "3", "4", "5" }));
         add(ratingComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 180, 200, 30));
+        add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 90, -1, 40));
+
+        addButton.setBackground(new java.awt.Color(101, 95, 123));
+        addButton.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        addButton.setFont(new java.awt.Font("Waree", 1, 12)); // NOI18N
+        addButton.setForeground(new java.awt.Color(254, 254, 254));
+        addButton.setLabel("Add");
+        addButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addButtonActionPerformed(evt);
+            }
+        });
+        add(addButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 200, 80, 30));
     }// </editor-fold>//GEN-END:initComponents
 
     private void buttonRidActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonRidActionPerformed
@@ -243,8 +259,13 @@ public class CollectionPanel extends javax.swing.JPanel {
         this.setVisible(false);
     }//GEN-LAST:event_buttonRidActionPerformed
 
+    private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_addButtonActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private java.awt.Button addButton;
     private java.awt.Button buttonRid;
     private javax.swing.JLabel defaultBoardgameIcon;
     private javax.swing.JTextArea editionText;
@@ -256,6 +277,7 @@ public class CollectionPanel extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JScrollPane jScrollPane8;
     private javax.swing.JScrollPane jScrollPane9;
+    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTextArea labelBoardgame;
     private javax.swing.JLabel labelDefaultImage;
     private javax.swing.JLabel labelEdition;

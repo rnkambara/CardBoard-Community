@@ -8,6 +8,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.awt.Component; 
 import java.sql.*;
+import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JToolBar;
 
@@ -29,6 +30,11 @@ public class BasePanel extends javax.swing.JPanel {
      */
     public BasePanel() {
         initComponents();
+    }
+    
+    public javax.swing.JComboBox<String> getUserComboBox()
+    {
+        return userComboBox;
     }
     
     public void fillScrollableArea(Collection<Component> panels)
@@ -85,6 +91,8 @@ public class BasePanel extends javax.swing.JPanel {
         jSeparator3 = new javax.swing.JSeparator();
         jScrollPane1 = new javax.swing.JScrollPane();
         scrollPanelBox = new javax.swing.JPanel();
+        userComboBox = new javax.swing.JComboBox<>();
+        jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         tab = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
@@ -96,9 +104,6 @@ public class BasePanel extends javax.swing.JPanel {
         globalRatings = new java.awt.Button();
         groupCollection = new java.awt.Button();
         recommendedGames = new java.awt.Button();
-        gameNightRecommendation = new java.awt.Button();
-        userComboBox = new javax.swing.JComboBox<>();
-        jLabel1 = new javax.swing.JLabel();
         panel1 = new java.awt.Panel();
         labelCardboardCommunity = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
@@ -128,16 +133,31 @@ public class BasePanel extends javax.swing.JPanel {
         scrollPanelBox.setLayout(new javax.swing.BoxLayout(scrollPanelBox, javax.swing.BoxLayout.Y_AXIS));
         jScrollPane1.setViewportView(scrollPanelBox);
 
+        userComboBox.setBackground(new java.awt.Color(254, 254, 254));
+        userComboBox.setFont(new java.awt.Font("Waree", 0, 15)); // NOI18N
+
+        jLabel1.setFont(new java.awt.Font("Waree", 1, 15)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(101, 95, 123));
+        jLabel1.setText("Select a User");
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(50, 50, 50)
-                .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(103, 103, 103)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 874, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(50, 50, 50)
+                        .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(103, 103, 103)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 874, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(userComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel1)))
+                .addContainerGap(335, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -146,7 +166,11 @@ public class BasePanel extends javax.swing.JPanel {
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 508, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(userComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 260, 1380, 640));
@@ -252,27 +276,7 @@ public class BasePanel extends javax.swing.JPanel {
         });
         jPanel3.add(recommendedGames);
 
-        gameNightRecommendation.setActionCommand("gameNightRecommendation");
-        gameNightRecommendation.setBackground(new java.awt.Color(101, 95, 123));
-        gameNightRecommendation.setFont(new java.awt.Font("Waree", 1, 18)); // NOI18N
-        gameNightRecommendation.setForeground(new java.awt.Color(254, 254, 254));
-        gameNightRecommendation.setLabel("Game Night");
-        gameNightRecommendation.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                gameNightRecommendationActionPerformed(evt);
-            }
-        });
-        jPanel3.add(gameNightRecommendation);
-        gameNightRecommendation.getAccessibleContext().setAccessibleName(" Game Night");
-
         tab.addTab("\"Unique\"", jPanel3);
-
-        userComboBox.setBackground(new java.awt.Color(254, 254, 254));
-        userComboBox.setFont(new java.awt.Font("Waree", 0, 15)); // NOI18N
-
-        jLabel1.setFont(new java.awt.Font("Waree", 1, 15)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(101, 95, 123));
-        jLabel1.setText("Select a User");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -280,10 +284,7 @@ public class BasePanel extends javax.swing.JPanel {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap(75, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(userComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1)
-                    .addComponent(tab, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(tab, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(32, 32, 32))
         );
         jPanel2Layout.setVerticalGroup(
@@ -291,11 +292,7 @@ public class BasePanel extends javax.swing.JPanel {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap(40, Short.MAX_VALUE)
                 .addComponent(tab, javax.swing.GroupLayout.PREFERRED_SIZE, 491, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(userComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(16, 16, 16))
+                .addGap(109, 109, 109))
         );
 
         tab.getAccessibleContext().setAccessibleName("mainTab");
@@ -366,7 +363,22 @@ public class BasePanel extends javax.swing.JPanel {
     }//GEN-LAST:event_eventButtonActionPerformed
 
     private void homeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeButtonActionPerformed
-      CardboardCommunity.form.getBasePanel().fillScrollableArea(null);
+
+        try {
+            Statement s = CardboardCommunity.connection.createStatement();
+            s.execute("SELECT * FROM MEMBER WHERE EMAIL = '" + CardboardCommunity.form.getCurrentUser()+"'");
+            ResultSet rs = s.getResultSet();
+            LinkedList<Component> list = new LinkedList<Component>();
+            userPanel p = new userPanel();
+            rs.next();
+            p.email = rs.getString("EMAIL");
+            p.username = rs.getString("USERNAME");
+            p.refresh();
+            list.add(p);
+            CardboardCommunity.form.getBasePanel().fillScrollableArea(list);
+        } catch (SQLException ex) {
+            Logger.getLogger(BasePanel.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_homeButtonActionPerformed
 
     private void globalRatingsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_globalRatingsActionPerformed
@@ -462,10 +474,6 @@ public class BasePanel extends javax.swing.JPanel {
     	}
     }//GEN-LAST:event_recommendedGamesActionPerformed
 
-    private void gameNightRecommendationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gameNightRecommendationActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_gameNightRecommendationActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup1;
@@ -473,7 +481,6 @@ public class BasePanel extends javax.swing.JPanel {
     private javax.swing.JLabel cbcIcon;
     private java.awt.Button collectionButton;
     private java.awt.Button eventButton;
-    private java.awt.Button gameNightRecommendation;
     private java.awt.Button globalRatings;
     private java.awt.Button groupButton;
     private java.awt.Button groupCollection;
